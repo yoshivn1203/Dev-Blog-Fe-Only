@@ -3,7 +3,6 @@
 import { Moon, Sun } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -16,22 +15,6 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch()
-  const router = useRouter()
-  const pathname = usePathname()
-
-  const scrollToSection = (sectionId: string) => {
-    if (pathname !== '/') {
-      // If not on home page, just navigate to home with the section hash
-      router.push(`/#${sectionId}`)
-    } else {
-      // If already on home page, scroll to section
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-        setIsMenuOpen(false)
-      }
-    }
-  }
 
   return (
     <>
@@ -76,30 +59,22 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <div className='hidden md:flex space-x-4 items-center'>
-              <Button
-                variant='ghost'
-                className='font-semibold'
-                onClick={() => scrollToSection('how-it-works')}
-              >
+              <Button variant='ghost' className='font-semibold'>
                 How It Works
               </Button>
-              <Button
-                variant='ghost'
-                className='font-semibold'
-                onClick={() => scrollToSection('reviews')}
-              >
+              <Button variant='ghost' className='font-semibold'>
                 Reviews
               </Button>
-              <Link href='/about'>
+              <Link href='/'>
                 <Button variant='ghost' className='font-semibold'>
-                  About Us
+                  About Me
                 </Button>
               </Link>
-              <Link href='/booking'>
+              {/* <Link href='/'>
                 <Button variant='destructive' className='font-semibold'>
-                  CHOOSE YOUR PLAN
+                  ACTION BUTTON
                 </Button>
-              </Link>
+              </Link> */}
               <div className='relative'>
                 <Button
                   variant='ghost'
@@ -109,10 +84,6 @@ export function Header() {
                 >
                   {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
                 </Button>
-                <div className='bg-foreground text-background py-2 px-4 absolute top-[51px] right-0 z-10 w-[412px]'>
-                  Prefer to talk? Call or WhatsApp us{' '}
-                  <span className='font-semibold underline'>+84-818-548-409</span>
-                </div>
               </div>
             </div>
           </div>
@@ -127,44 +98,31 @@ export function Header() {
                   ? 'opacity-100 translate-y-0 z-50'
                   : 'opacity-0 -translate-y-2 pointer-events-none -z-10'
               }
-              md:hidden pb-4 space-y-2
+              md:hidden pb-4 
             `}
           >
-            <Link href='/booking' className='block' onClick={() => setIsMenuOpen(false)}>
+            {/* <Link href='/booking' className='block' onClick={() => setIsMenuOpen(false)}>
               <Button variant='destructive' className='ml-3'>
-                Choose Your Plan
+                ACTION BUTTON
+              </Button>
+            </Link> */}
+            <Link href='/' onClick={() => setIsMenuOpen(false)}>
+              <Button variant='ghost' className='w-full justify-start font-semibold'>
+                How It Works
               </Button>
             </Link>
-            <div className='py-1 ml-3 text-sm'>
-              Prefer to talk? Call or WhatsApp us{' '}
-              <span className='font-semibold underline'>+84-818-548-409</span>
-            </div>
-
-            <Button
-              variant='ghost'
-              className='w-full justify-start font-semibold'
-              onClick={() => scrollToSection('how-it-works')}
-            >
-              How It Works
-            </Button>
-            <Button
-              variant='ghost'
-              className='w-full justify-start font-semibold'
-              onClick={() => scrollToSection('reviews')}
-            >
+            <Link href='/' onClick={() => setIsMenuOpen(false)}></Link>
+            <Button variant='ghost' className='w-full justify-start font-semibold'>
               Reviews
             </Button>
-            <Link href='/about' onClick={() => setIsMenuOpen(false)}>
+            <Link href='/' onClick={() => setIsMenuOpen(false)}>
               <Button variant='ghost' className='w-full justify-start font-semibold'>
-                About
+                About Me
               </Button>
             </Link>
           </div>
         </div>
       </nav>
-      {/* <div className='hidden md:block relative'> */}
-
-      {/* </div> */}
     </>
   )
 }
