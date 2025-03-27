@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <link href="https://unpkg.com/@staticcms/app@^4.0.0/dist/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script src="https://unpkg.com/@staticcms/app@^4.0.0/dist/static-cms-app.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        window.CMS.init({
+          config: {
+            backend: {
+              name: "proxy",
+              proxy_url: "http://localhost:8081/api/v1",
+              branch: "main",
+            },
+            media_folder: "public/images/uploads",
+            media_library: {
+              max_file_size: 10485760 // 10MB in bytes
+            },
+            public_folder: "/images/uploads",
+            collections: [
+              {
+                name: "places-blog",
+                label: "Places",
+                folder: "content/blog",
+                create: true,
+                format: "frontmatter",
+                extension: "md",
+                slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+                filter: {field: "category", value: "places"},
+                fields: [
+                  {label: "Layout", name: "layout", widget: "hidden", default: "blog"},
+                  {label: "Title", name: "title", widget: "string"},
+                  {label: "Publish Date", name: "date", widget: "datetime"},
+                  {label: "Category", name: "category", widget: "hidden", default: "places"},
+                  {label: "Featured Image", name: "thumbnail", widget: "image", required: false},
+                  {label: "Rating", name: "rating", widget: "number", value_type: "decimal", min: 1, max: 5},
+                  {label: "Description", name: "description", widget: "text"},
+                  {label: "Body", name: "body", widget: "markdown"}
+                ]
+              },
+              {
+                name: "food-blog",
+                label: "Food",
+                folder: "content/blog",
+                create: true,
+                format: "frontmatter",
+                extension: "md",
+                slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+                filter: {field: "category", value: "food"},
+                fields: [
+                  {label: "Layout", name: "layout", widget: "hidden", default: "blog"},
+                  {label: "Title", name: "title", widget: "string"},
+                  {label: "Publish Date", name: "date", widget: "datetime"},
+                  {label: "Category", name: "category", widget: "hidden", default: "food"},
+                  {label: "Featured Image", name: "thumbnail", widget: "image", required: false},
+                  {label: "Rating", name: "rating", widget: "number", value_type: "decimal", min: 1, max: 5, required: false},
+                  {label: "Reading Time", name: "reading_time", widget: "number", value_type: "int", min: 1, max: 10, required: false},
+                  {label: "Description", name: "description", widget: "text"},
+                  {label: "Body", name: "body", widget: "markdown"}
+                ]
+              }
+            ]
+          }
+        });
+      });
+    </script>
+  </body>
+</html> 
