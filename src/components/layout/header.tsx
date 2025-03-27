@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <>
-      <nav className='border-b'>
+      <nav className='border-b bg-gray-50 dark:bg-gray-800 border-t'>
         <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
           <div className='flex justify-between h-16 items-center'>
             {/* Mobile menu button */}
@@ -57,14 +57,26 @@ export function Header() {
               </Link>
             </div>
 
+            {/* Theme toggle for mobile */}
+            <div className='md:hidden'>
+              <Button
+                variant='ghost'
+                size='icon'
+                onClick={() => dispatch(toggleTheme())}
+                className='p-2'
+              >
+                {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
+              </Button>
+            </div>
+
             {/* Desktop Navigation */}
             <div className='hidden md:flex space-x-4 items-center'>
-              <Button variant='ghost' className='font-semibold'>
+              {/* <Button variant='ghost' className='font-semibold'>
                 How It Works
               </Button>
               <Button variant='ghost' className='font-semibold'>
                 Reviews
-              </Button>
+              </Button> */}
               <Link href='/'>
                 <Button variant='ghost' className='font-semibold'>
                   About Me
@@ -106,7 +118,7 @@ export function Header() {
                 ACTION BUTTON
               </Button>
             </Link> */}
-            <Link href='/' onClick={() => setIsMenuOpen(false)}>
+            {/* <Link href='/' onClick={() => setIsMenuOpen(false)}>
               <Button variant='ghost' className='w-full justify-start font-semibold'>
                 How It Works
               </Button>
@@ -114,7 +126,7 @@ export function Header() {
             <Link href='/' onClick={() => setIsMenuOpen(false)}></Link>
             <Button variant='ghost' className='w-full justify-start font-semibold'>
               Reviews
-            </Button>
+            </Button> */}
             <Link href='/' onClick={() => setIsMenuOpen(false)}>
               <Button variant='ghost' className='w-full justify-start font-semibold'>
                 About Me

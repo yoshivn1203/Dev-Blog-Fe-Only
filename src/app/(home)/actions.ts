@@ -16,7 +16,8 @@ export interface Post {
   category: string
   description: string
   thumbnail?: string
-  rating?: number
+  author: string
+  tags?: string[]
   reading_time?: string
 }
 

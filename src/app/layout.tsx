@@ -57,7 +57,7 @@ function RootLayoutContent({ children }: { children: React.ReactNode }) {
         <GoogleAnalytics GA_MEASUREMENT_ID='G-0FC2VFHBGG' />
         <Header />
         <Suspense fallback={<LoadingSpinner />}>
-          <main className='mx-auto flex-1 w-full'>{children}</main>
+          <main className='mx-auto flex-1 w-full max-w-6xl'>{children}</main>
         </Suspense>
         <Footer />
       </body>
