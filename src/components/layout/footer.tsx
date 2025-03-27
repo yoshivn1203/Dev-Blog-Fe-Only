@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import logoImage from '@/assets/images/logo.png'
+import logoImage from '@/assets/images/logo.svg'
 
 export function Footer() {
   return (
@@ -21,7 +21,7 @@ export function Footer() {
                 className='object-contain'
               />
             </Link>
-            <p className=' w-[100%] md:w-2/3 pt-4 text-sm text-muted-foreground'>
+            <p className=' w-[100%] md:w-2/3 text-sm text-muted-foreground'>
               A community-driven platform for programming knowledge exchange. Share experiences,
               learn from others, and grow together as developers.
             </p>
@@ -83,7 +83,7 @@ export function Footer() {
 
         <div className='mt-12 border-t pt-4'>
           <div className='text-center text-sm text-muted-foreground'>
-            <p>© 2024 BoBinaryBytes. All rights reserved.</p>
+            <p>© 2024 BoBytes. All rights reserved.</p>
           </div>
         </div>
       </div>

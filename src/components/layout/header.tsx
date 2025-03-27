@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import logoImage from '@/assets/images/logo.png'
+import logoImage from '@/assets/images/logo.svg'
 import { Button } from '@/components/ui/button'
 import { RootState } from '@/store/store'
 import { toggleTheme } from '@/store/ui/themeSlice'
