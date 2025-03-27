@@ -13,7 +13,7 @@ export function BlogCard({ post }: { post: Post }) {
   const hasHalfStar = Number(rating) % 1 >= 0.5
 
   return (
-    <Link href={`/blog/${post.slug}`}>
+    <Link href={`/${post.slug}`}>
       <Card className='h-full overflow-hidden hover:shadow-lg transition-shadow'>
         {post.thumbnail && (
           <div className='relative w-full h-48'>
