@@ -12,7 +12,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className='container mx-auto p-6 sm:mt-12'>
-      <div className='prose prose-sm sm:prose-base dark:prose-invert max-w-none'>
+      <div className='prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none'>
         <h1 className='text-2xl md:text-3xl font-bold mb-4'>{post.title}</h1>
         <div className='mb-8 flex items-center gap-2 text-muted-foreground'>
           <span>{post.author}</span>
@@ -52,11 +52,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {post.content}
         </ReactMarkdown>
       </div>
-      <div className='flex flex-wrap gap-2 mt-4 mb-8'>
+      <p className='text-sm md:text-base lg:text-lg font-bold mt-8'>Tags:</p>
+      <div className='flex flex-wrap gap-2 mt-2 mb-8'>
         {post.tags?.map((tag: string, index: number) => (
           <span
             key={index}
-            className='px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground'
+            className='px-2 py-1 text-xs md:text-sm lg:text-base md:px-4 md:py-2 rounded-full bg-foreground text-background'
           >
             {tag}
           </span>
