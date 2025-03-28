@@ -10,8 +10,8 @@ export default async function BlogPage() {
 
   return (
     <>
-      <Hero />
-      <div className='container mx-auto p-2 md:p-6 max-w-6xl'>
+      <Hero showWelcome={true} />
+      <div className='relative container mx-auto p-2 md:p-6 max-w-6xl mt-[-100px] md:mt-[-120px]'>
         <p className='text-lg font-bold'>Latest posts</p>
         <div className='h-[1px] w-full bg-gray-200 dark:bg-gray-700 mb-6'></div>
         <div className='flex flex-col gap-6'>

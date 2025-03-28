@@ -8,7 +8,7 @@ import logoImage from '@/assets/images/logo.svg'
 
 export function Footer() {
   return (
-    <footer className='bg-gray-50 dark:bg-gray-800 border-t'>
+    <footer className='bg-gray-50 dark:bg-gray-800 border-t mt-8'>
       <div className='mx-auto max-w-screen-2xl px-4 pt-8 pb-4 sm:px-6 lg:px-8'>
         <div className='flex flex-col lg:flex-row items-start justify-between gap-8'>
           <div className='sm:justify-start lg:max-w-sm'>
