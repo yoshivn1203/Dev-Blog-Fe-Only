@@ -23,32 +23,33 @@ export function BlogCard({ post }: { post: Post }) {
               />
             </div>
           )}
-          <div className='flex-grow'>
-            <CardHeader>
-              <CardTitle className='line-clamp-2'>{post.title}</CardTitle>
-              <div className='flex items-center gap-2 text-sm text-muted-foreground'>
-                <span>{post.author}</span>
-                <span>-</span>
-                <time>{format(new Date(post.date), 'MMM d, yyyy')}</time>
-              </div>
-              <div className='flex items-center gap-2 text-sm text-muted-foreground'>
-                <span>{post.reading_time} mins read</span>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className='line-clamp-2'>{post.description}</CardDescription>
-
-              <div className='flex flex-wrap gap-2 mt-4'>
-                {post.tags?.map((tag: string, index: number) => (
-                  <span
-                    key={index}
-                    className='px-2 py-1 text-xs rounded-full bg-foreground text-background'
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </CardContent>
+          <div className='flex-grow h-full flex flex-col justify-between'>
+            <div>
+              <CardHeader className='pb-4'>
+                <CardTitle className='line-clamp-2'>{post.title}</CardTitle>
+                <div className='flex items-center gap-2 text-sm text-muted-foreground'>
+                  <span>{post.author}</span>
+                  <span>-</span>
+                  <time>{format(new Date(post.date), 'MMM d, yyyy')}</time>
+                </div>
+                <div className='flex items-center gap-2 text-sm text-muted-foreground'>
+                  <span className='text-xs'>{post.reading_time} mins read</span>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className='line-clamp-3'>{post.description}</CardDescription>
+              </CardContent>
+            </div>
+            <div className='flex flex-wrap gap-2 pl-4 pb-4'>
+              {post.tags?.map((tag: string, index: number) => (
+                <span
+                  key={index}
+                  className='px-2 py-1 text-xs rounded-full bg-foreground text-background'
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </Card>

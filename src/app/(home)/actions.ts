@@ -50,3 +50,11 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     ...(data as Omit<Post, 'slug' | 'content'>)
   }
 }
+
+export async function searchPosts(query: string): Promise<Post[]> {
+  console.log('searchPosts', query)
+  const posts = await getPosts()
+  const searchQuery = query.toLowerCase()
+
+  return posts.filter(post => post.title.toLowerCase().includes(searchQuery))
+}

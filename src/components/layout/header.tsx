@@ -1,11 +1,13 @@
 'use client'
 
-import { Moon, Sun } from 'lucide-react'
+import debounce from 'lodash/debounce'
+import { Loader2, Moon, Search, Sun } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { Post, searchPosts } from '@/app/(home)/actions'
 import logoImage from '@/assets/images/logo.svg'
 import { Button } from '@/components/ui/button'
 import { RootState } from '@/store/store'
@@ -13,8 +15,32 @@ import { toggleTheme } from '@/store/ui/themeSlice'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<Post[]>([])
+  const [isSearching, setIsSearching] = useState(false)
   const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch()
+
+  // Create a debounced search function
+  const debouncedSearch = useCallback((query: string) => {
+    if (query.length > 2) {
+      setIsSearching(true)
+      searchPosts(query).then(results => {
+        setSearchResults(results)
+        setIsSearching(false)
+      })
+    } else {
+      setSearchResults([])
+    }
+  }, [])
+
+  const debouncedSearchWithDelay = useMemo(() => debounce(debouncedSearch, 300), [debouncedSearch])
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value
+    setSearchQuery(query)
+    debouncedSearchWithDelay(query)
+  }
 
   return (
     <>
@@ -45,16 +71,61 @@ export function Header() {
             </div>
 
             {/* Logo */}
-            <div className='flex-1 flex items-center justify-center md:justify-start'>
-              <Link href='/' className='flex items-center justify-center w-full md:justify-start'>
+            <div className='flex-shrink-0 flex items-center justify-center md:justify-start'>
+              <Link href='/' className='flex items-center justify-center md:justify-start'>
                 <Image
                   src={logoImage}
                   alt='DN DENTCARE Logo'
-                  height={140}
-                  width={140}
+                  height={100}
+                  width={100}
                   className='object-contain'
                 />
               </Link>
+            </div>
+
+            {/* Search Bar - Desktop */}
+            <div className='hidden md:flex flex-1 justify-end px-4 relative'>
+              <div className='w-[300px] relative'>
+                <input
+                  type='text'
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  placeholder='Search posts...'
+                  className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500'
+                />
+                {isSearching ? (
+                  <Loader2 className='absolute right-3 top-2.5 h-5 w-5 text-gray-400 animate-spin' />
+                ) : (
+                  <Search className='absolute right-3 top-2.5 h-5 w-5 text-gray-400' />
+                )}
+
+                {/* Search Results Dropdown */}
+                {searchQuery.length > 2 && (
+                  <div className='absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg max-h-60 overflow-auto z-50'>
+                    {isSearching ? (
+                      <div className='px-4 py-2 text-gray-500 dark:text-gray-400'>Searching...</div>
+                    ) : searchResults.length > 0 ? (
+                      searchResults.map(post => (
+                        <Link
+                          key={post.slug}
+                          href={`/${post.slug}`}
+                          onClick={() => {
+                            setSearchQuery('')
+                            setSearchResults([])
+                          }}
+                          className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        >
+                          {post.title}
+                        </Link>
+                      ))
+                    ) : (
+                      <div className='px-4 py-2 text-gray-500 dark:text-gray-400'>
+                        No results found
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Theme toggle for mobile */}
@@ -98,6 +169,50 @@ export function Header() {
                 </Button>
               </div>
             </div>
+          </div>
+
+          {/* Mobile Search Bar */}
+          <div className='md:hidden pb-4'>
+            <div className='relative'>
+              <input
+                type='text'
+                value={searchQuery}
+                onChange={handleSearch}
+                placeholder='Search posts...'
+                className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500'
+              />
+              {isSearching ? (
+                <Loader2 className='absolute right-3 top-2.5 h-5 w-5 text-gray-400 animate-spin' />
+              ) : (
+                <Search className='absolute right-3 top-2.5 h-5 w-5 text-gray-400' />
+              )}
+            </div>
+
+            {/* Mobile Search Results */}
+            {searchQuery.length > 2 && (
+              <div className='mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg max-h-60 overflow-auto'>
+                {isSearching ? (
+                  <div className='px-4 py-2 text-gray-500 dark:text-gray-400'>Searching...</div>
+                ) : searchResults.length > 0 ? (
+                  searchResults.map(post => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      onClick={() => {
+                        setSearchQuery('')
+                        setSearchResults([])
+                        setIsMenuOpen(false)
+                      }}
+                      className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    >
+                      {post.title}
+                    </Link>
+                  ))
+                ) : (
+                  <div className='px-4 py-2 text-gray-500 dark:text-gray-400'>No results found</div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Mobile Navigation */}
