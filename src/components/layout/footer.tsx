@@ -8,7 +8,7 @@ import logoImage from '@/assets/images/logo.svg'
 
 export function Footer() {
   return (
-    <footer className='bg-gray-50 dark:bg-gray-800 border-t mt-8'>
+    <footer className='shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] dark:bg-gray-800 border-t mt-8'>
       <div className='mx-auto max-w-screen-2xl px-4 pt-8 pb-4 sm:px-6 lg:px-8'>
         <div className='flex flex-col lg:flex-row items-start justify-between gap-8'>
           <div className='sm:justify-start lg:max-w-sm'>
@@ -30,7 +30,7 @@ export function Footer() {
           {/* Quick Links */}
           <div className='grid gap-8 grid-cols-1 sm:grid-cols-3 w-full lg:w-auto'>
             <div>
-              <p className='font-medium'>Resources</p>
+              <p className='font-bold'>Resources</p>
               <nav className='mt-4 flex flex-col space-y-2 text-sm text-muted-foreground'>
                 <Link href='/' className='hover:opacity-75'>
                   Tutorials
@@ -45,7 +45,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className='font-medium'>Social</p>
+              <p className='font-bold'>Social</p>
               <nav className='mt-4 flex flex-col space-y-2 text-sm text-muted-foreground'>
                 <Link href='/' className='hover:opacity-75'>
                   Github
@@ -60,7 +60,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className='font-medium'>Contact</p>
+              <p className='font-bold'>Contact</p>
               <nav className='mt-4 flex flex-col space-y-2 text-sm text-muted-foreground'>
                 {/* <div className='flex items-center gap-2'>
                     <Phone className='h-4 w-4' />
@@ -80,7 +80,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className='mt-12 border-t pt-4'>
+      <div className='mt-12 border-t pt-2 pb-2'>
         <div className='text-center text-sm text-muted-foreground'>
           <p>© 2024 BoBytes. All rights reserved.</p>
         </div>
