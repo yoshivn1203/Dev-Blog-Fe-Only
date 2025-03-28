@@ -20,7 +20,7 @@ export default async function BlogPage() {
             Welcome!
           </h1>
         </div>
-        <p className='text-base md:text-lg text-gray-700 dark:text-gray-300'>
+        <p className='text-sm md:text-lg text-gray-700 dark:text-gray-300'>
           Hey there, welcome to my developer blog—straight from my brain to you, where I dump
           everything I'm learning as I go!
         </p>
