@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
-import { Hero } from '@/components/layout/hero'
 import { RootState, store } from '@/store/store'
 
 const geistSans = Geist({
@@ -57,9 +56,8 @@ function RootLayoutContent({ children }: { children: React.ReactNode }) {
       >
         <GoogleAnalytics GA_MEASUREMENT_ID='G-0FC2VFHBGG' />
         <Header />
-        <Hero />
         <Suspense fallback={<LoadingSpinner />}>
-          <main className='mx-auto flex-1 w-full max-w-6xl'>{children}</main>
+          <main className='mx-auto flex-1 w-full'>{children}</main>
         </Suspense>
         <Footer />
       </body>

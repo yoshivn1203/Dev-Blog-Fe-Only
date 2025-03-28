@@ -27,7 +27,7 @@ export function Hero() {
       </div>
 
       {/* Welcome Content */}
-      <div className='relative z-10 pt-32 px-4 sm:px-6 lg:px-8 text-center'>
+      <div className='relative z-10 pt-40 md:pt-32 px-4 sm:px-6 lg:px-8 text-center'>
         <div className='flex items-center gap-4 mb-4 justify-center'>
           <div className='flex text-indigo-500 dark:text-indigo-400 '>
             <Code className='w-8 h-8 -ml-2' />

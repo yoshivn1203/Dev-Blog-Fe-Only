@@ -11,7 +11,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = await getPostBySlug(slug)
 
   return (
-    <article className='container mx-auto p-6 sm:mt-12'>
+    <article className='container mx-auto p-6 mt-32 md:mt-24 max-w-6xl'>
       <div className='prose prose-sm md:prose-base space-y-4 dark:prose-invert max-w-none'>
         <h1 className='text-2xl md:text-3xl font-bold mb-4'>{post.title}</h1>
         <div className='mb-8 flex items-center gap-2 text-muted-foreground'>
