@@ -11,8 +11,15 @@ export function BlogCard({ post }: { post: Post }) {
     <Link href={`/${post.slug}`}>
       <Card className='h-full overflow-hidden hover:shadow-lg transition-shadow md:min-w-[400px] dark:bg-gray-800'>
         {post.thumbnail && (
-          <div className='relative w-full h-48'>
-            <Image src={post.thumbnail} alt={post.title} fill className='object-cover' />
+          <div className='relative w-full h-48 bg-muted'>
+            <Image
+              src={post.thumbnail}
+              alt={post.title}
+              fill
+              className='object-cover'
+              placeholder='blur'
+              blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjM2NmYxIiBzdG9wLW9wYWNpdHk9IjAuMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIgc3RvcC1vcGFjaXR5PSIwLjIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+'
+            />
           </div>
         )}
         <CardHeader>

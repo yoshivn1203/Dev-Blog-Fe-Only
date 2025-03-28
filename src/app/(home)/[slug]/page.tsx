@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw' // ✅ Allow raw HTML
 import remarkGfm from 'remark-gfm'
@@ -21,10 +22,20 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <time className='text-muted-foreground'>{new Date(post.date).toLocaleDateString()}</time>
         </div>
         {post.thumbnail && (
-          <img
+          // <img
+          //   src={post.thumbnail}
+          //   alt={post.title}
+          //   className='w-full h-[240px] sm:h-[480px] object-cover rounded-lg mb-8'
+          // />
+          <Image
             src={post.thumbnail}
             alt={post.title}
-            className='w-full h-[240px] sm:h-[480px] object-cover rounded-lg mb-8'
+            width={1024}
+            height={768}
+            className='w-full h-auto aspect-[16/9] object-cover rounded-lg mb-8'
+            placeholder='blur'
+            blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjM2NmYxIiBzdG9wLW9wYWNpdHk9IjAuMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIgc3RvcC1vcGFjaXR5PSIwLjIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+'
+            priority
           />
         )}
         <ReactMarkdown
