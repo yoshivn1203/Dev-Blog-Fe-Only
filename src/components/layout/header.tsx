@@ -199,7 +199,7 @@ export function Header() {
                 searchResults.map(post => (
                   <Link
                     key={post.slug}
-                    href={`/blog/${post.slug}`}
+                    href={`/${post.slug}`}
                     onClick={() => {
                       setSearchQuery('')
                       setSearchResults([])
