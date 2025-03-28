@@ -1,16 +1,16 @@
 ---
 layout: blog
-title: How does DNS work?
+title: "How does DNS work?"
 date: 2025-03-27T20:51:15
 author: Nguyen Nguyen
 tags:
-  - Web Development
-  - DevOps
   - Cloud
-reading_time: 8
+  - DevOps
+  - Security
+reading_time: 12
 category: technology
 thumbnail: /images/uploads/what-is-dns.png
-description: "Understanding DNS Records: A Focus on the Most Used Type"
+description: Understanding DNS Records - A Focus on the Most Used Type
 ---
 DNS (Domain Name System) is like the internet's phonebook—it translates human-friendly domain names (e.g., `example.com`) into machine-readable IP addresses (e.g., `192.0.2.1`). To make this magic happen, DNS relies on various types of records. While there are many DNS record types—each serving a unique purpose—the **A record** stands out as the most commonly used. In this post, we'll explore what an `A` record is and walk through how to set it up in AWS Route 53 to get your app online.
 

@@ -9,7 +9,7 @@ import type { Post } from './actions'
 export function BlogCard({ post }: { post: Post }) {
   return (
     <Link href={`/${post.slug}`}>
-      <Card className='h-full overflow-hidden hover:shadow-lg transition-shadow md:min-w-[400px] dark:bg-gray-800'>
+      <Card className='h-full overflow-hidden hover:shadow-lg transition-shadow  dark:bg-gray-800'>
         {post.thumbnail && (
           <div className='relative w-full h-48 bg-muted'>
             <Image
@@ -40,7 +40,7 @@ export function BlogCard({ post }: { post: Post }) {
             {post.tags?.map((tag: string, index: number) => (
               <span
                 key={index}
-                className='px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground'
+                className='px-2 py-1 text-xs rounded-full bg-foreground text-background'
               >
                 {tag}
               </span>
