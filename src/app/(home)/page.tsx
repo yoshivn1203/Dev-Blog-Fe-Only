@@ -1,5 +1,4 @@
 // Remove 'use client' since we want this to be a Server Component
-import { Code } from 'lucide-react'
 
 import { getPosts } from './actions'
 import { BlogCard } from './blog-card'
@@ -9,22 +8,6 @@ export default async function BlogPage() {
 
   return (
     <div className='container mx-auto p-6 sm:mt-12'>
-      {/* Welcome Section */}
-      <div className='mb-12 p-8 rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20'>
-        <div className='flex items-center gap-4 mb-4'>
-          <div className='flex text-indigo-500 dark:text-indigo-400'>
-            <Code className='w-8 h-8 -ml-2' />
-          </div>
-          <h1 className='text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 text-transparent bg-clip-text'>
-            Welcome!
-          </h1>
-        </div>
-        <p className='text-sm md:text-lg text-gray-700 dark:text-gray-300'>
-          Hey there, welcome to my developer blog—straight from my brain to you, where I dump
-          everything I'm learning as I go!
-        </p>
-      </div>
-
       <p className='text-lg font-bold'>Latest posts</p>
       <div className='h-[1px] w-full bg-gray-200 dark:bg-gray-700 mb-6'></div>
       <div className='flex flex-col gap-6'>
