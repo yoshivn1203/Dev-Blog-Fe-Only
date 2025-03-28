@@ -148,7 +148,10 @@ export function Header() {
                 Reviews
               </Button> */}
             <Link href='/'>
-              <Button variant='ghost' className='font-semibold hover:bg-transparent'>
+              <Button
+                variant='ghost'
+                className='font-semibold hover:bg-transparent hover:opacity-80'
+              >
                 About Me
               </Button>
             </Link>
@@ -162,7 +165,7 @@ export function Header() {
                 variant='ghost'
                 size='icon'
                 onClick={() => dispatch(toggleTheme())}
-                className='ml-2 hover:bg-transparent'
+                className='ml-2 hover:bg-transparent hover:opacity-80'
               >
                 {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
               </Button>
