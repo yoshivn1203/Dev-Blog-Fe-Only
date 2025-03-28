@@ -9,7 +9,7 @@ import type { Post } from './actions'
 export function BlogCard({ post }: { post: Post }) {
   return (
     <Link href={`/${post.slug}`}>
-      <Card className='h-full overflow-hidden hover:shadow-lg transition-shadow md:min-w-[400px]'>
+      <Card className='h-full overflow-hidden hover:shadow-lg transition-shadow md:min-w-[400px] dark:bg-gray-800'>
         {post.thumbnail && (
           <div className='relative w-full h-48'>
             <Image src={post.thumbnail} alt={post.title} fill className='object-cover' />
