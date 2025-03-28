@@ -28,7 +28,7 @@ Key features:
 
 ## Subnets: Dividing Your VPC
 
-Subnets segment your VPC’s IP range into smaller blocks (e.g., **10.0.1.0/24**), each tied to an Availability Zone (AZ). They help organize resources and define public or private access:
+Subnets segment your VPC’s IP range into smaller blocks (e.g., `10.0.1.0/24`), each tied to an Availability Zone (AZ). They help organize resources and define public or private access:
 
 - **Public Subnet**: Connected to the internet via an Internet Gateway.
 - **Private Subnet**: Isolated from the internet, often used for databases or backend services.
@@ -40,7 +40,7 @@ Subnets rely on routing tables to determine how traffic flows, which brings us t
 An **Internet Gateway (IGW)** is a VPC component that enables communication between your VPC and the internet. When you set up a VPC, it’s isolated by default. To make a subnet public—allowing resources like an EC2 instance to send/receive internet traffic—you must:
 
 1. Attach an Internet Gateway to the VPC.
-1. Update the subnet’s route table to direct traffic (e.g., **0.0.0.0/0**) to the IGW.
+1. Update the subnet’s route table to direct traffic (e.g., `0.0.0.0/0`) to the IGW.
 
 Without an IGW, your VPC remains a closed network, even if it has public subnets defined.
 
@@ -70,7 +70,7 @@ Let’s set up a VPC, subnets, an Internet Gateway, and security groups for a Ne
 1. Go to the AWS VPC console.
 1. Create a VPC:
    1. Name: **nestjs-vpc**
-   1. IPv4 CIDR: **10.0.0.0/16**
+   1. IPv4 CIDR: `10.0.0.0/16`
 1. Enable DNS hostnames and DNS resolution (for RDS connectivity).
 
 ### Step 2: Set Up Subnets
@@ -79,11 +79,11 @@ Create two subnets in different AZs (e.g., us-east-1a and us-east-1b):
 
 - **Public Subnet**:
   - Name: **public-subnet-1**
-  - CIDR: **10.0.1.0/24**
+  - CIDR: `10.0.1.0/24`
   - AZ: **us-east-1a**
 - **Private Subnet**:
   - Name: **private-subnet-1**
-  - CIDR: **10.0.2.0/24**
+  - CIDR: `10.0.2.0/24`
   - AZ: **us-east-1b**
 
 ### Step 3: Configure the Internet Gateway
@@ -93,7 +93,7 @@ Create two subnets in different AZs (e.g., us-east-1a and us-east-1b):
 1. Attach it to **nestjs-vpc**.
 1. Update the public subnet’s route table:
    1. Create a route table (**public-rt**) and associate it with **public-subnet-1**.
-   1. Add a route: Destination **0.0.0.0/0** → Target **nestjs-igw**.
+   1. Add a route: Destination `0.0.0.0/0` → Target **nestjs-igw**.
 
 The private subnet’s route table (**private-rt**) remains without an IGW route, keeping it isolated.
 
@@ -103,8 +103,8 @@ The private subnet’s route table (**private-rt**) remains without an IGW route
   - Name: **nestjs-sg**
   - VPC: **nestjs-vpc**
   - Inbound Rules:
-    - Type: HTTP, Port: 3000, Source: **0.0.0.0/0** (public access)
-    - Type: SSH, Port: 22, Source: **/32** (for admin access)
+    - Type: HTTP, Port: 3000, Source: `0.0.0.0/0` (public access)
+    - Type: SSH, Port: 22, Source: **/32** (meaning only 1 ip for admin access)
   - Outbound: Allow all traffic (default).
 - **RDS Security Group** (for database):
   - Name: **rds-sg**

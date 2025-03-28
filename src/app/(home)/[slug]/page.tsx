@@ -12,7 +12,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className='container mx-auto p-6 sm:mt-12'>
-      <div className='prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none'>
+      <div className='prose prose-sm md:prose-base space-y-4 dark:prose-invert max-w-none'>
         <h1 className='text-2xl md:text-3xl font-bold mb-4'>{post.title}</h1>
         <div className='mb-8 flex items-center gap-2 text-muted-foreground'>
           <span>{post.author}</span>
@@ -46,7 +46,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <div className='relative w-full aspect-video'>
                 <iframe {...props} className='absolute inset-0 w-full h-full' />
               </div>
-            )
+            ),
+            //code block
+            pre: ({ children, ...props }) => (
+              <pre
+                className='bg-blue-100 dark:bg-gray-700 p-4 rounded-lg overflow-x-auto'
+                {...props}
+              >
+                {children}
+              </pre>
+            ),
+            //code line
+            code: ({ children, ...props }: any) => {
+              return (
+                <code
+                  className='rounded bg-blue-100 dark:bg-gray-700 px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground'
+                  {...props}
+                >
+                  {children}
+                </code>
+              )
+            }
           }}
         >
           {post.content}
@@ -57,7 +77,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         {post.tags?.map((tag: string, index: number) => (
           <span
             key={index}
-            className='px-2 py-1 text-xs md:text-sm lg:text-base md:px-4 md:py-2 rounded-full bg-foreground text-background'
+            className='px-2 py-1 text-xs md:text-sm lg:text-base md:px-4 rounded-full bg-foreground text-background'
           >
             {tag}
           </span>
