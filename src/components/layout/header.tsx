@@ -43,7 +43,7 @@ export function Header() {
   }
 
   return (
-    <nav className='absolute w-full border-b border-gray-200/20 bg-transparent backdrop-blur-sm z-50 shadow-md'>
+    <nav className='absolute w-full border-b border-gray-200/20 dark:border-gray-600/20 bg-transparent backdrop-blur-sm z-50 shadow-md'>
       <div className='mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between h-16 items-center'>
           {/* Mobile menu button */}
