@@ -1,7 +1,6 @@
 ---
 layout: blog
-title: "Understanding AWS VPC: Subnets, Security Groups, Internet Gateways, and
-  a Practical Example"
+title: "AWS VPC: Subnets, Security Groups, Internet Gateways"
 date: 2025-03-28T16:43:49
 author: Nguyen Nguyen
 tags:
@@ -153,7 +152,3 @@ npm run start
 
 In this setup, the **VPC** provides the network foundation, **subnets** separate public (EC2) and private (RDS) resources, the **Internet Gateway** enables internet access for the public subnet, and **security groups** enforce traffic rules. This architecture ensures your NestJS app is publicly accessible while keeping the database secure and isolated. Mastering these components—VPC, subnets, IGW, and security groups—unlocks the power to build robust, secure AWS applications.
 ```
-
-
-
-

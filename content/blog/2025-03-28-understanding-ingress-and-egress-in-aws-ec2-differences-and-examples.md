@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "Understanding Ingress and Egress in AWS EC2: Differences and Examples"
+title: "Ingress and Egress in AWS EC2: Differences and Examples"
 date: 2025-03-28T16:53:00
 author: Nguyen Nguyen
 tags:
