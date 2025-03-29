@@ -52,7 +52,6 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 }
 
 export async function searchPosts(query: string): Promise<Post[]> {
-  console.log('searchPosts', query)
   const posts = await getPosts()
   const searchQuery = query.toLowerCase()
 
