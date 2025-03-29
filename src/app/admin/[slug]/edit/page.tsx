@@ -19,7 +19,7 @@ const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   author: z.string().min(1, 'Author is required'),
   tags: z.string().min(1, 'At least one tag is required'),
-  reading_time: z.string().min(1, 'Reading time is required'),
+  reading_time: z.coerce.number().min(1, 'Reading time must be at least 1 minute'),
   category: z.string().min(1, 'Category is required'),
   thumbnail: z.string().min(1, 'Thumbnail is required'),
   description: z.string().min(1, 'Description is required')
@@ -56,7 +56,7 @@ export default function EditPost({ params }: { params: Promise<{ slug: string }>
           setFormValue('title', post.title || '')
           setFormValue('author', post.author || '')
           setFormValue('tags', post.tags?.join(', ') || '')
-          setFormValue('reading_time', post.reading_time || '')
+          setFormValue('reading_time', parseInt(post.reading_time || '0') || 0)
           setFormValue('category', post.category || '')
           setFormValue('thumbnail', post.thumbnail || '')
           setFormValue('description', post.description || '')
@@ -280,7 +280,7 @@ description: "${data.description}"
             </div>
             {errors.thumbnail && <p className='text-sm text-red-500'>{errors.thumbnail.message}</p>}
             {thumbnail && (
-              <div className='mt-2'>
+              <div className='mt-16'>
                 <img
                   src={thumbnail}
                   alt='Thumbnail preview'

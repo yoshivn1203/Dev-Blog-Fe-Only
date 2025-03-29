@@ -18,7 +18,7 @@ const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   author: z.string().min(1, 'Author is required'),
   tags: z.string().min(1, 'At least one tag is required'),
-  reading_time: z.string().min(1, 'Reading time is required'),
+  reading_time: z.coerce.number().min(1, 'Reading time must be at least 1 minute'),
   category: z.string().min(1, 'Category is required'),
   thumbnail: z.string().min(1, 'Thumbnail is required'),
   description: z.string().min(1, 'Description is required')
@@ -47,7 +47,9 @@ export default function NewPost() {
   // Initialize default values after mount
   React.useEffect(() => {
     setValue('**Hello world!!!**')
-    setFormValue('author', 'Your Name') // Optional: Set default author
+    setFormValue('author', 'Nguyen Nguyen')
+    setFormValue('category', 'Technology')
+    setFormValue('reading_time', 10)
     //this is mostly to avoid hydration error
     setIsLoading(false)
   }, [setFormValue])
@@ -261,7 +263,7 @@ description: "${data.description}"
             </div>
             {errors.thumbnail && <p className='text-sm text-red-500'>{errors.thumbnail.message}</p>}
             {thumbnail && (
-              <div className='mt-2'>
+              <div className='mt-16'>
                 <img
                   src={thumbnail}
                   alt='Thumbnail preview'

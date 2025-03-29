@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "Ingress and Egress in AWS EC2: Differences and Examples"
-date: 2025-03-28T16:53:00
+date: 2025-03-29T12:36:43
 author: Nguyen Nguyen
 tags:
   - Cloud
@@ -9,8 +9,9 @@ tags:
 reading_time: 8
 category: technology
 thumbnail: /images/uploads/amazon-ec2.jpg
-description: "Ingress and Egress in AWS EC2\r"
+description: "Ingress and Egress in AWS EC2"
 ---
+
 When managing Amazon EC2 instances, controlling network traffic is critical for security and functionality. Two key concepts in this context are **ingress** and **egress**, which define the direction of traffic relative to your EC2 instance. In this article, we’ll explain what ingress and egress mean, how they differ, and provide practical examples—including why SSH requires both—to help you configure your EC2 instances effectively.
 
 ## What is Ingress?

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "AWS VPC: Subnets, Security Groups, Internet Gateways"
-date: 2025-03-28T16:43:49
+date: 2025-03-29T12:36:46
 author: Nguyen Nguyen
 tags:
   - Cloud
@@ -10,9 +10,9 @@ tags:
 reading_time: 14
 category: technology
 thumbnail: /images/uploads/maxresdefault.jpg
-description: "This blog explores AWS VPC, subnets, Internet Gateways, and
-  security groups, highlighting their roles and differences\r"
+description: "This blog explores AWS VPC, subnets, Internet Gateways, and security groups, highlighting their roles and differences"
 ---
+
 Amazon Web Services (AWS) offers powerful networking tools like **Virtual Private Cloud (VPC)**, **subnets**, **security groups**, and **Internet Gateways** to create secure, scalable cloud infrastructures. These components work together but serve distinct roles. In this blog, we’ll explore what a VPC is, how subnets and Internet Gateways fit in, how security groups differ, and walk through a practical example of setting up a NestJS app on an EC2 instance connected to an RDS database.
 
 ## What is an AWS VPC?
