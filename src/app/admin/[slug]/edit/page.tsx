@@ -176,7 +176,7 @@ description: "${data.description}"
         throw new Error('Failed to save file')
       }
 
-      router.push('/adminv2')
+      router.push('/admin')
     } catch (error) {
       console.error('Error saving file:', error)
       alert('Failed to save file')
@@ -192,7 +192,7 @@ description: "${data.description}"
       <div className='flex items-center gap-2'>
         <Button
           variant='ghost'
-          onClick={() => router.push('/adminv2')}
+          onClick={() => router.push('/admin')}
           className='pl-0 hover:bg-transparent hover:opacity-80'
         >
           <ArrowLeft className='mr-2 h-4 w-4' />

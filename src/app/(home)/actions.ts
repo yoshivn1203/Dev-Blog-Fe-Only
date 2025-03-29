@@ -38,9 +38,15 @@ export async function getPosts(): Promise<Post[]> {
   return posts.sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
+export async function getPostBySlug(slug: string): Promise<Post | null> {
   const decodedSlug = decodeURIComponent(slug)
   const fullPath = path.join(postsDirectory, `${decodedSlug}.md`)
+
+  // Check if file exists before trying to read it
+  if (!fs.existsSync(fullPath)) {
+    return null
+  }
+
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 

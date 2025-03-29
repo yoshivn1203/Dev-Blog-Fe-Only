@@ -95,7 +95,7 @@ export default function PostsList() {
 
       <div className='flex justify-between items-center'>
         <h2 className='text-xl font-bold'>Posts</h2>
-        <Button onClick={() => router.push('/adminv2/new')}>
+        <Button onClick={() => router.push('/admin/new')}>
           <Plus className='mr-2 h-4 w-4' />
           New Post
         </Button>
@@ -119,7 +119,7 @@ export default function PostsList() {
                     <Button
                       variant='outline'
                       size='icon'
-                      onClick={() => router.push(`/adminv2/${post.slug}/edit`)}
+                      onClick={() => router.push(`/admin/${post.slug}/edit`)}
                       title='Edit post'
                     >
                       <Pencil className='h-4 w-4' />
