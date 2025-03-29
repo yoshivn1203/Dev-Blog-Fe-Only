@@ -91,11 +91,17 @@ export default function PostsList() {
 
   return (
     <div className='space-y-6'>
-      <h1 className='text-2xl font-bold'>Admin Dashboard</h1>
+      <h1 className='text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 text-transparent bg-clip-text'>
+        Admin Dashboard
+      </h1>
 
       <div className='flex justify-between items-center'>
-        <h2 className='text-xl font-bold'>Posts</h2>
-        <Button onClick={() => router.push('/admin/new')}>
+        <h2 className='text-xl font-bold'>Posts list</h2>
+        <Button
+          variant='outline'
+          onClick={() => router.push('/admin/new')}
+          className='bg-gradient-to-r hover:text-white from-indigo-600 to-purple-600 dark:from-indigo-500 dark:to-purple-500 hover:from-indigo-700 hover:to-purple-700 dark:hover:from-indigo-600 dark:hover:to-purple-600 text-white border-0'
+        >
           <Plus className='mr-2 h-4 w-4' />
           New Post
         </Button>
@@ -117,22 +123,24 @@ export default function PostsList() {
                 <TableCell className='min-w-[200px]'>
                   <div className='flex gap-2'>
                     <Button
-                      variant='outline'
+                      variant='ghost'
                       size='icon'
                       onClick={() => router.push(`/admin/${post.slug}/edit`)}
                       title='Edit post'
+                      className='hover:bg-transparent hover:opacity-80'
                     >
-                      <Pencil className='h-4 w-4' />
+                      <Pencil className='h-24 w-24 text-blue-500' />
                     </Button>
                     <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                       <DialogTrigger asChild>
                         <Button
-                          variant='destructive'
+                          variant='ghost'
                           size='icon'
                           onClick={() => setPostToDelete({ slug: post.slug, title: post.title })}
                           title='Delete post'
+                          className='hover:bg-transparent hover:opacity-80'
                         >
-                          <Trash2 className='h-4 w-4' />
+                          <Trash2 className=' text-red-500' />
                         </Button>
                       </DialogTrigger>
                       <DialogContent>

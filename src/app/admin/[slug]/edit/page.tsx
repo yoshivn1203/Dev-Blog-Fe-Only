@@ -188,18 +188,27 @@ description: "${data.description}"
   }
 
   return (
-    <div data-color-mode='light'>
+    <div data-color-mode='light' className='mb-10'>
       <div className='flex items-center gap-2'>
         <Button
           variant='ghost'
           onClick={() => router.push('/admin')}
-          className='pl-0 hover:bg-transparent hover:opacity-80'
+          className='pl-0 hover:bg-transparent hover:opacity-80 text-blue-600'
         >
           <ArrowLeft className='mr-2 h-4 w-4' />
           Back to Dashboard
         </Button>
       </div>
-      <h1 className='text-xl font-bold mt-4'>Editing Post</h1>
+      <div className='flex justify-between items-center'>
+        <h1 className='text-xl font-bold mt-4'>Editing Post</h1>
+        <Button
+          variant='outline'
+          onClick={handleSubmit(onSubmit)}
+          className='bg-gradient-to-r hover:text-white from-indigo-600 to-purple-600 dark:from-indigo-500 dark:to-purple-500 hover:from-indigo-700 hover:to-purple-700 dark:hover:from-indigo-600 dark:hover:to-purple-600 text-white border-0'
+        >
+          Update Post
+        </Button>
+      </div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -288,9 +297,6 @@ description: "${data.description}"
         </div>
       </form>
       <MDEditor value={value} onChange={setValue} onPaste={handlePaste} height={640} />
-      <div className='flex justify-end mt-4'>
-        <Button onClick={handleSubmit(onSubmit)}>Update</Button>
-      </div>
     </div>
   )
 }
