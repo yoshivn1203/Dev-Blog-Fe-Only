@@ -45,7 +45,7 @@ export function BlogCard({ post }: { post: Post }) {
               {post.tags?.map((tag: string, index: number) => (
                 <div
                   key={index}
-                  className='px-3 py-1 text-xs rounded-full bg-blue-600 dark:bg-blue-900 text-white flex items-center gap-2'
+                  className='px-3 py-1 text-xs rounded-full bg-blue-400 dark:bg-blue-900 text-white flex items-center gap-2'
                 >
                   <Tag className='w-4 h-4' /> {tag}
                 </div>
