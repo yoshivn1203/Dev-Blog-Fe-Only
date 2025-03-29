@@ -41,9 +41,10 @@ export function Hero({ showWelcome = true }: { showWelcome: boolean }) {
               Welcome!
             </h1>
           </div>
-          <p className='text-sm md:text-lg text-gray-700 dark:text-gray-300'>
-            Hey there, welcome to my developer blog—straight from my brain to you, where I dump
-            everything I'm learning as I go!
+          <p className='text-sm md:text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto'>
+            Hey there, welcome to my developer blog—straight from my brain to you, where I dump all
+            my thoughts, experiences, and lessons I learned as I explore the world of software
+            development
           </p>
         </div>
       )}

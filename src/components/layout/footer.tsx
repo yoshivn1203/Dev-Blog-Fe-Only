@@ -22,8 +22,9 @@ export function Footer() {
               />
             </Link>
             <p className='text-sm text-muted-foreground'>
-              A community-driven platform for programming knowledge exchange. Share experiences,
-              learn from others, and grow together as developers.
+              Welcome to my personal developer blog, where I share my thoughts, experiences, and
+              lessons learned as I explore the world of software development. Whether you're here to
+              learn or just curious about my projects, I hope you find something useful!
             </p>
           </div>
 

@@ -235,6 +235,13 @@ description: "${data.description}"
             {errors.category && <p className='text-sm text-red-500'>{errors.category.message}</p>}
           </div>
           <div className='space-y-2'>
+            <Label htmlFor='description'>Description *</Label>
+            <Input id='description' {...register('description')} placeholder='Enter description' />
+            {errors.description && (
+              <p className='text-sm text-red-500'>{errors.description.message}</p>
+            )}
+          </div>
+          <div className='space-y-2'>
             <Label htmlFor='thumbnail'>Thumbnail *</Label>
             <div className='flex gap-2'>
               <Input
@@ -270,13 +277,6 @@ description: "${data.description}"
                   className='max-w-xs rounded-lg shadow-sm'
                 />
               </div>
-            )}
-          </div>
-          <div className='space-y-2'>
-            <Label htmlFor='description'>Description *</Label>
-            <Input id='description' {...register('description')} placeholder='Enter description' />
-            {errors.description && (
-              <p className='text-sm text-red-500'>{errors.description.message}</p>
             )}
           </div>
         </div>
