@@ -2,7 +2,8 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import MDEditor from '@uiw/react-md-editor'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Loader2 } from 'lucide-react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -169,20 +170,25 @@ description: "${data.description}"
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div className='flex justify-center items-center '>
+        <Loader2 className='animate-spin' />
+      </div>
+    )
   }
 
   return (
     <div data-color-mode={isDark ? 'dark' : 'light'} className='mb-10'>
-      <div className='flex items-center gap-2'>
-        <Button
-          variant='ghost'
-          onClick={() => router.push('/admin')}
-          className='pl-0 hover:bg-transparent hover:opacity-80 text-blue-600 dark:text-blue-500'
-        >
-          <ArrowLeft className='mr-2 h-4 w-4' />
-          Back to Dashboard
-        </Button>
+      <div className='flex items-center'>
+        <Link href='/admin'>
+          <Button
+            variant='ghost'
+            className='pl-0 text-base  text-blue-600 dark:text-blue-500 hover:text-blue-600 dark:hover:text-blue-500 hover:bg-transparent hover:opacity-80'
+          >
+            <ArrowLeft className='h-4 w-4' />
+            Back to Dashboard
+          </Button>
+        </Link>
       </div>
 
       <div className='flex justify-between items-center border-b border-gray-300 dark:border-gray-700 pb-2'>

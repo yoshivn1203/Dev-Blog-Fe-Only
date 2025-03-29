@@ -1,6 +1,7 @@
 'use client'
 
-import { Pencil, Plus, Trash2 } from 'lucide-react'
+import { format } from 'date-fns'
+import { Loader2, Pencil, Plus, Trash2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
@@ -49,15 +50,6 @@ export default function PostsList() {
     loadPosts()
   }, [])
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-  }
-
   const handleDelete = async () => {
     if (!postToDelete) return
 
@@ -86,7 +78,11 @@ export default function PostsList() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div className='flex justify-center items-center '>
+        <Loader2 className='animate-spin' />
+      </div>
+    )
   }
 
   return (
@@ -120,7 +116,9 @@ export default function PostsList() {
               <TableCell className='font-medium min-w-[200px] md:min-w-[480px]'>
                 {post.title}
               </TableCell>
-              <TableCell className='min-w-[150px]'>{formatDate(post.date)}</TableCell>
+              <TableCell className='min-w-[150px]'>
+                {format(new Date(post.date), 'dd/MM/yyyy')}
+              </TableCell>
               <TableCell className='w-[70px]'>
                 <div className='flex gap-2'>
                   <Button

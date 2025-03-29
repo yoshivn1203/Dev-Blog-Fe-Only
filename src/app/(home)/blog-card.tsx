@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import { Tag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -42,12 +43,12 @@ export function BlogCard({ post }: { post: Post }) {
             </div>
             <div className='flex flex-wrap gap-2 pl-4 pb-4'>
               {post.tags?.map((tag: string, index: number) => (
-                <span
+                <div
                   key={index}
-                  className='px-2 py-1 text-xs rounded-full bg-foreground text-background'
+                  className='px-3 py-1 text-xs rounded-full bg-blue-600 dark:bg-blue-900 text-white flex items-center gap-2'
                 >
-                  {tag}
-                </span>
+                  <Tag className='w-4 h-4' /> {tag}
+                </div>
               ))}
             </div>
           </div>
