@@ -6,11 +6,13 @@ import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import * as z from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { RootState } from '@/store/store'
 
 const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -26,8 +28,10 @@ type FormData = z.infer<typeof formSchema>
 
 export default function NewPost() {
   const router = useRouter()
-  const [value, setValue] = React.useState<string | undefined>('**Hello world!!!**')
+  const isDark = useSelector((state: RootState) => state.theme.isDark)
+  const [value, setValue] = React.useState<string | undefined>()
   const [isUploading, setIsUploading] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(true)
 
   const {
     register,
@@ -39,6 +43,14 @@ export default function NewPost() {
   } = useForm<FormData>({
     resolver: zodResolver(formSchema)
   })
+
+  // Initialize default values after mount
+  React.useEffect(() => {
+    setValue('**Hello world!!!**')
+    setFormValue('author', 'Your Name') // Optional: Set default author
+    //this is mostly to avoid hydration error
+    setIsLoading(false)
+  }, [setFormValue])
 
   const thumbnail = watch('thumbnail')
 
@@ -154,20 +166,24 @@ description: "${data.description}"
     }
   }
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (
-    <div data-color-mode='light' className='mb-10'>
+    <div data-color-mode={isDark ? 'dark' : 'light'} className='mb-10'>
       <div className='flex items-center gap-2'>
         <Button
           variant='ghost'
           onClick={() => router.push('/admin')}
-          className='pl-0 hover:bg-transparent hover:opacity-80 text-blue-600'
+          className='pl-0 hover:bg-transparent hover:opacity-80 text-blue-600 dark:text-blue-500'
         >
           <ArrowLeft className='mr-2 h-4 w-4' />
           Back to Dashboard
         </Button>
       </div>
 
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center border-b border-gray-300 dark:border-gray-700 pb-2'>
         <h1 className='text-xl font-bold mt-4'>Creating New Post</h1>
         <Button
           variant='outline'

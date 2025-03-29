@@ -106,68 +106,68 @@ export default function PostsList() {
           New Post
         </Button>
       </div>
-      <div className='border rounded-lg overflow-x-auto'>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className='min-w-[200px]'>Title</TableHead>
-              <TableHead className='min-w-[150px]'>Date</TableHead>
-              <TableHead className='min-w-[200px]'>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {posts.map(post => (
-              <TableRow key={post.slug}>
-                <TableCell className='font-medium min-w-[200px]'>{post.title}</TableCell>
-                <TableCell className='min-w-[150px]'>{formatDate(post.date)}</TableCell>
-                <TableCell className='min-w-[200px]'>
-                  <div className='flex gap-2'>
-                    <Button
-                      variant='ghost'
-                      size='icon'
-                      onClick={() => router.push(`/admin/${post.slug}/edit`)}
-                      title='Edit post'
-                      className='hover:bg-transparent hover:opacity-80'
-                    >
-                      <Pencil className='h-24 w-24 text-blue-500' />
-                    </Button>
-                    <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-                      <DialogTrigger asChild>
-                        <Button
-                          variant='ghost'
-                          size='icon'
-                          onClick={() => setPostToDelete({ slug: post.slug, title: post.title })}
-                          title='Delete post'
-                          className='hover:bg-transparent hover:opacity-80'
-                        >
-                          <Trash2 className=' text-red-500' />
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className='min-w-[200px]'>Title</TableHead>
+            <TableHead className='min-w-[150px]'>Date</TableHead>
+            <TableHead className='min-w-[200px]'>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {posts.map(post => (
+            <TableRow key={post.slug}>
+              <TableCell className='font-medium min-w-[200px] md:min-w-[480px]'>
+                {post.title}
+              </TableCell>
+              <TableCell className='min-w-[150px]'>{formatDate(post.date)}</TableCell>
+              <TableCell className='w-[70px]'>
+                <div className='flex gap-2'>
+                  <Button
+                    variant='ghost'
+                    size='icon'
+                    onClick={() => router.push(`/admin/${post.slug}/edit`)}
+                    title='Edit post'
+                    className='hover:bg-transparent hover:opacity-80'
+                  >
+                    <Pencil className='h-24 w-24 text-blue-500' />
+                  </Button>
+                  <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button
+                        variant='ghost'
+                        size='icon'
+                        onClick={() => setPostToDelete({ slug: post.slug, title: post.title })}
+                        title='Delete post'
+                        className='hover:bg-transparent hover:opacity-80'
+                      >
+                        <Trash2 className=' text-red-500' />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Delete Post</DialogTitle>
+                        <DialogDescription>
+                          Are you sure you want to delete "{postToDelete?.title}"? This action
+                          cannot be undone.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <DialogFooter>
+                        <Button variant='outline' onClick={() => setDeleteDialogOpen(false)}>
+                          Cancel
                         </Button>
-                      </DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>Delete Post</DialogTitle>
-                          <DialogDescription>
-                            Are you sure you want to delete "{postToDelete?.title}"? This action
-                            cannot be undone.
-                          </DialogDescription>
-                        </DialogHeader>
-                        <DialogFooter>
-                          <Button variant='outline' onClick={() => setDeleteDialogOpen(false)}>
-                            Cancel
-                          </Button>
-                          <Button variant='destructive' onClick={handleDelete}>
-                            Delete
-                          </Button>
-                        </DialogFooter>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
+                        <Button variant='destructive' onClick={handleDelete}>
+                          Delete
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   )
 }
