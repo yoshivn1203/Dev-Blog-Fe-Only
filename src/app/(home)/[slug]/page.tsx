@@ -3,9 +3,42 @@ import { ArrowLeft, Tag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw' // ✅ Allow raw HTML
+import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+
+import { MermaidDiagram } from '@/components/MermaidDiagram'
+
+interface CodeProps {
+  inline?: boolean
+  children?: React.ReactNode
+  className?: string
+  node?: any
+  [key: string]: any
+}
+
+const Code: React.FC<CodeProps> = ({ inline, children = [], className, node, ...props }) => {
+  const isMermaid = className && /^language-mermaid/.test(className.toLocaleLowerCase())
+  const code = Array.isArray(children) && children.length > 0 ? children[0].toString() : ''
+
+  if (inline) {
+    return <code className={className}>{children}</code>
+  }
+
+  if (isMermaid) {
+    return <MermaidDiagram code={code} node={node} />
+  }
+
+  return (
+    <code
+      className='rounded bg-blue-100 dark:bg-gray-700 px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground'
+      {...props}
+    >
+      {children}
+    </code>
+  )
+}
 
 import { Hero } from '@/components/layout/hero'
 import { Button } from '@/components/ui/button'
@@ -95,16 +128,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   </pre>
                 ),
                 //code line
-                code: ({ children, ...props }: any) => {
-                  return (
-                    <code
-                      className='rounded bg-blue-100 dark:bg-gray-700 px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground'
-                      {...props}
-                    >
-                      {children}
-                    </code>
-                  )
-                }
+                code: Code
               }}
             >
               {post.content}
