@@ -99,12 +99,36 @@ export default function EditPost({ params }: { params: Promise<{ slug: string }>
       const file = item.getAsFile()
       if (file) {
         try {
+          setIsUploading(true)
           const imageUrl = await uploadImage(file)
           const imageMarkdown = `![image](${imageUrl})\n`
-          setValue(prev => (prev ? prev + imageMarkdown : imageMarkdown))
+
+          // Find the MDEditor's textarea element using its specific class
+          const textarea = document.querySelector('.w-md-editor-text-input')
+          if (textarea instanceof HTMLTextAreaElement) {
+            // Get current cursor position
+            const { selectionStart, selectionEnd } = textarea
+            const currentValue = value || ''
+
+            // Insert the image markdown at cursor position by:
+            // 1. Taking the text before the cursor
+            // 2. Adding the image markdown
+            // 3. Taking the text after the cursor
+            const newValue =
+              currentValue.substring(0, selectionStart) +
+              imageMarkdown +
+              currentValue.substring(selectionEnd)
+
+            setValue(newValue)
+          } else {
+            // Fallback: if textarea not found, append to end
+            setValue(prev => (prev ? prev + imageMarkdown : imageMarkdown))
+          }
         } catch (error) {
           console.error('Error uploading pasted image:', error)
           alert('Failed to upload pasted image')
+        } finally {
+          setIsUploading(false)
         }
       }
     }
