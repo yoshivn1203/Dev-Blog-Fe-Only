@@ -84,9 +84,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               Back to Dashboard
             </Button>
           </Link>
-          <div className='prose prose-sm md:prose-base space-y-4 dark:prose-invert max-w-none mt-4'>
-            <h1 className='text-2xl md:text-4xl font-bold !mb-0'>{post.title}</h1>
-            <div className='flex text-xs md:text-base items-center gap-2 text-muted-foreground !mt-2'>
+          <div className='prose prose-sm md:prose-base dark:prose-invert max-w-none mt-4'>
+            <h1 className='text-2xl md:text-4xl font-bold !mb-2'>{post.title}</h1>
+            <div className='flex text-xs md:text-base items-center gap-2 text-muted-foreground'>
               <span>By {post.author}</span>
               <span>-</span>
               <time className='text-muted-foreground'>
@@ -96,14 +96,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <span>{post.reading_time} mins read</span>
             </div>
 
-            <Tags className='!mt-2' />
+            <Tags className='mt-2' />
             {post.thumbnail && (
               <Image
                 src={post.thumbnail}
                 alt={post.title}
                 width={1024}
                 height={768}
-                className='w-full h-auto aspect-[16/9] object-cover rounded-lg mb-8 !mt-8'
+                className='w-full h-auto aspect-[16/9] object-cover rounded-lg mb-8 mt-8'
                 placeholder='blur'
                 blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlNWU1ZTUiIHN0b3Atb3BhY2l0eT0iMC4zIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjODA4MDgwIiBzdG9wLW9wYWNpdHk9IjAuMyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYSkiLz48L3N2Zz4='
                 priority
