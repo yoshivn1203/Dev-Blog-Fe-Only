@@ -83,8 +83,8 @@ export function Header() {
           </div>
 
           {/* Search Bar - Desktop */}
-          <div className='hidden md:flex flex-1 justify-end px-4 relative'>
-            <div className='w-[300px] relative'>
+          <div className='hidden md:flex flex-1 justify-start md:ml-6 lg:ml-12 px-4 relative'>
+            <div className='w-[400px] relative'>
               <input
                 type='text'
                 value={searchQuery}
@@ -112,7 +112,7 @@ export function Header() {
                           setSearchQuery('')
                           setSearchResults([])
                         }}
-                        className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        className='block text-sm px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
                       >
                         {post.title}
                       </Link>
@@ -147,12 +147,20 @@ export function Header() {
               <Button variant='ghost' className='font-semibold'>
                 Reviews
               </Button> */}
+            <Link href='/' onClick={() => setIsMenuOpen(false)}>
+              <Button
+                variant='ghost'
+                className='w-full justify-start font-semibold hover:bg-transparent'
+              >
+                Home
+              </Button>
+            </Link>
             <Link href='/'>
               <Button
                 variant='ghost'
                 className='font-semibold hover:bg-transparent hover:opacity-80'
               >
-                About Me
+                About Us
               </Button>
             </Link>
             {/* <Link href='/'>
@@ -181,7 +189,7 @@ export function Header() {
               value={searchQuery}
               onChange={handleSearch}
               placeholder='Search posts...'
-              className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500'
+              className='w-full text-sm px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500'
             />
             {isSearching ? (
               <Loader2 className='absolute right-3 top-2.5 h-5 w-5 text-gray-400 animate-spin' />
@@ -194,7 +202,9 @@ export function Header() {
           {searchQuery.length > 2 && (
             <div className='mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg max-h-60 overflow-auto'>
               {isSearching ? (
-                <div className='px-4 py-2 text-gray-500 dark:text-gray-400'>Searching...</div>
+                <div className='text-sm px-4 py-2 text-gray-500 dark:text-gray-400'>
+                  Searching...
+                </div>
               ) : searchResults.length > 0 ? (
                 searchResults.map(post => (
                   <Link
@@ -205,13 +215,15 @@ export function Header() {
                       setSearchResults([])
                       setIsMenuOpen(false)
                     }}
-                    className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    className='block text-sm px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
                   >
                     {post.title}
                   </Link>
                 ))
               ) : (
-                <div className='px-4 py-2 text-gray-500 dark:text-gray-400'>No results found</div>
+                <div className='text-sm px-4 py-2 text-gray-500 dark:text-gray-400'>
+                  No results found
+                </div>
               )}
             </div>
           )}
@@ -249,7 +261,15 @@ export function Header() {
               variant='ghost'
               className='w-full justify-start font-semibold hover:bg-transparent'
             >
-              About Me
+              Home
+            </Button>
+          </Link>
+          <Link href='/' onClick={() => setIsMenuOpen(false)}>
+            <Button
+              variant='ghost'
+              className='w-full justify-start font-semibold hover:bg-transparent'
+            >
+              About Us
             </Button>
           </Link>
         </div>
