@@ -4,12 +4,14 @@ import debounce from 'lodash/debounce'
 import { Loader2, Moon, Search, Sun } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Post, searchPosts } from '@/app/(home)/actions'
 import logoImage from '@/assets/images/logo.svg'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { RootState } from '@/store/store'
 import { toggleTheme } from '@/store/ui/themeSlice'
 
@@ -20,6 +22,7 @@ export function Header() {
   const [isSearching, setIsSearching] = useState(false)
   const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch()
+  const pathname = usePathname()
 
   // Create a debounced search function
   const debouncedSearch = useCallback((query: string) => {
@@ -141,33 +144,32 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex space-x-4 items-center'>
-            {/* <Button variant='ghost' className='font-semibold'>
-                How It Works
-              </Button>
-              <Button variant='ghost' className='font-semibold'>
-                Reviews
-              </Button> */}
             <Link href='/' onClick={() => setIsMenuOpen(false)}>
               <Button
                 variant='ghost'
-                className='w-full justify-start font-semibold hover:bg-transparent'
+                className={cn(
+                  'font-semibold rounded-none hover:bg-transparent hover:opacity-80 py-0 h-[24px]',
+                  pathname === '/'
+                    ? 'text-blue-600 hover:text-blue-600 border-b-2 border-blue-600'
+                    : 'hover:text-primary'
+                )}
               >
                 Home
               </Button>
             </Link>
-            <Link href='/'>
+            <Link href='/about'>
               <Button
                 variant='ghost'
-                className='font-semibold hover:bg-transparent hover:opacity-80'
+                className={cn(
+                  'font-semibold rounded-none hover:bg-transparent hover:opacity-80 py-0 h-[24px]',
+                  pathname === '/about'
+                    ? 'text-blue-600 hover:text-blue-600 border-b-2 border-blue-600'
+                    : 'hover:text-primary'
+                )}
               >
-                About Us
+                About Me
               </Button>
             </Link>
-            {/* <Link href='/'>
-                <Button variant='destructive' className='font-semibold'>
-                  ACTION BUTTON
-                </Button>
-              </Link> */}
             <div className='relative'>
               <Button
                 variant='ghost'
@@ -242,34 +244,26 @@ export function Header() {
               md:hidden pb-4 
             `}
         >
-          {/* <Link href='/booking' className='block' onClick={() => setIsMenuOpen(false)}>
-              <Button variant='destructive' className='ml-3'>
-                ACTION BUTTON
-              </Button>
-            </Link> */}
-          {/* <Link href='/' onClick={() => setIsMenuOpen(false)}>
-              <Button variant='ghost' className='w-full justify-start font-semibold'>
-                How It Works
-              </Button>
-            </Link>
-            <Link href='/' onClick={() => setIsMenuOpen(false)}></Link>
-            <Button variant='ghost' className='w-full justify-start font-semibold'>
-              Reviews
-            </Button> */}
           <Link href='/' onClick={() => setIsMenuOpen(false)}>
             <Button
               variant='ghost'
-              className='w-full justify-start font-semibold hover:bg-transparent'
+              className={cn(
+                'w-full rounded-none justify-start font-semibold hover:bg-gray-200 dark:hover:bg-gray-700',
+                pathname === '/' && 'bg-gray-100 dark:bg-gray-700'
+              )}
             >
               Home
             </Button>
           </Link>
-          <Link href='/' onClick={() => setIsMenuOpen(false)}>
+          <Link href='/about' onClick={() => setIsMenuOpen(false)}>
             <Button
               variant='ghost'
-              className='w-full justify-start font-semibold hover:bg-transparent'
+              className={cn(
+                'w-full rounded-none justify-start font-semibold hover:bg-gray-200 dark:hover:bg-gray-700',
+                pathname === '/about' && 'bg-gray-100 dark:bg-gray-700'
+              )}
             >
-              About Us
+              About Me
             </Button>
           </Link>
         </div>
