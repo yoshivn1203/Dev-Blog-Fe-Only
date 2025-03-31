@@ -8,38 +8,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
-import { MermaidDiagram } from '@/components/MermaidDiagram'
-
-interface CodeProps {
-  inline?: boolean
-  children?: React.ReactNode
-  className?: string
-  node?: any
-  [key: string]: any
-}
-
-const Code: React.FC<CodeProps> = ({ inline, children = [], className, node, ...props }) => {
-  const isMermaid = className && /^language-mermaid/.test(className.toLocaleLowerCase())
-  const code = Array.isArray(children) && children.length > 0 ? children[0].toString() : ''
-
-  if (inline) {
-    return <code className={className}>{children}</code>
-  }
-
-  if (isMermaid) {
-    return <MermaidDiagram code={code} node={node} />
-  }
-
-  return (
-    <code
-      className='rounded bg-blue-100 dark:bg-gray-700 px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground'
-      {...props}
-    >
-      {children}
-    </code>
-  )
-}
-
+import { Code } from '@/components/Code'
 import { Hero } from '@/components/layout/hero'
 import { Button } from '@/components/ui/button'
 
@@ -118,16 +87,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     <iframe {...props} className='absolute inset-0 w-full h-full' />
                   </div>
                 ),
-                //code block
+                //code block (```) and mermaid diagram has a pre tag as parent
                 pre: ({ children, ...props }) => (
                   <pre
-                    className='bg-blue-100 dark:bg-gray-700 p-4 rounded-lg overflow-x-auto'
+                    className='!bg-blue-100 dark:!bg-gray-600 !p-0 rounded-lg overflow-x-auto'
                     {...props}
                   >
                     {children}
                   </pre>
                 ),
-                //code line
+                //this is code for both inline and block code
                 code: Code
               }}
             >

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "AWS VPC: Subnets, Security Groups, Internet Gateways"
-date: 2025-03-30T17:11:17
+date: 2025-03-31T03:43:29
 author: Nguyen Nguyen
 tags:
   - Cloud
@@ -12,6 +12,15 @@ category: technology
 thumbnail: /images/uploads/maxresdefault.jpg
 description: "This blog explores AWS VPC, subnets, Internet Gateways, and security groups, highlighting their roles and differences "
 ---
+
+
+
+
+
+
+
+
+
 
 
 Amazon Web Services (AWS) offers powerful networking tools like **Virtual Private Cloud (VPC)**, **subnets**, **security groups**, and **Internet Gateways** to create secure, scalable cloud infrastructures. These components work together but serve distinct roles. In this blog, we’ll explore what a VPC is, how subnets and Internet Gateways fit in, how security groups differ, and walk through a practical example of setting up a NestJS app on an EC2 instance connected to an RDS database.
@@ -122,7 +131,7 @@ The private subnet’s route table (**private-rt**) remains without an IGW route
    1. Assign a public IP (auto-assign enabled).
 1. SSH into the instance, install [Node.js](Node.js), and deploy your NestJS app:
 
-```
+```bash
 sudo yum update -y
 curl -sL https://rpm.nodesource.com/setup_18.x | sudo bash -
 sudo yum install -y nodejs
@@ -130,7 +139,6 @@ git clone
 cd 
 npm install
 npm run start
-
 ```
 
 ### Step 6: Set Up the RDS Database
@@ -146,7 +154,7 @@ npm run start
 
 ### Step 7: Test the Setup
 
-- Access your NestJS app at **http://<ec2-public-ip>:3000**.
+- Access your NestJS app at **http://ec2-public-ip:3000**.
 - The app should connect to the RDS database in the private subnet, while the public subnet and IGW enable internet access to the EC2 instance.
 
 ## Conclusion
