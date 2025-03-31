@@ -54,7 +54,7 @@ function RootLayoutContent({ children }: { children: React.ReactNode }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background min-h-screen flex flex-col`}
       >
-        <GoogleAnalytics GA_MEASUREMENT_ID='G-0FC2VFHBGG' />
+        <GoogleAnalytics GA_MEASUREMENT_ID='G-0DG7D15LW7' />
         <Header />
         <Suspense fallback={<LoadingSpinner />}>
           <main className='mx-auto flex-1 w-full'>{children}</main>
