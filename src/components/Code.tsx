@@ -1,7 +1,13 @@
+'use client'
+
+import { CheckIcon } from 'lucide-react'
+import { CopyIcon } from 'lucide-react'
 import React from 'react'
 
 import { MermaidDiagram } from '@/components/MermaidDiagram'
 import { cn } from '@/lib/utils'
+
+import { Button } from './ui/button'
 
 interface CodeProps {
   inline?: boolean
@@ -26,11 +32,34 @@ export const Code: React.FC<CodeProps> = ({ children = [], className, node, ...p
 
   // code block
   if (isCodeBlock) {
+    const [copied, setCopied] = React.useState(false)
+    const codeRef = React.useRef<HTMLElement>(null)
+
+    const handleCopy = () => {
+      const codeText = codeRef.current?.textContent || ''
+      navigator.clipboard.writeText(codeText)
+      setCopied(true)
+    }
+
     return (
       <>
-        <div className='bg-gray-800 text-gray-200 px-4 py-2 text-sm'>{match[1]}</div>
+        <div className='bg-gray-800 text-gray-200 px-4 py-2 text-sm flex justify-between items-center'>
+          <span>{match[1]}</span>
+          <Button variant='ghost' onClick={handleCopy} className=''>
+            {copied ? (
+              <>
+                <CheckIcon /> Copied!
+              </>
+            ) : (
+              <>
+                <CopyIcon /> Copy
+              </>
+            )}
+          </Button>
+        </div>
         <div className='p-4'>
           <code
+            ref={codeRef}
             className={cn(
               '!rounded !p-0 !bg-blue-100 dark:!bg-gray-600 !font-mono !text-sm !text-foreground',
               className
