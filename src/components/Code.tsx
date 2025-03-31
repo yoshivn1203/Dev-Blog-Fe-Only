@@ -57,11 +57,11 @@ export const Code: React.FC<CodeProps> = ({ children = [], className, node, ...p
             )}
           </Button>
         </div>
-        <div className='p-4'>
+        <div className='p-4 overflow-x-auto'>
           <code
             ref={codeRef}
             className={cn(
-              '!rounded !p-0 !bg-blue-100 dark:!bg-gray-600 !font-mono !text-sm !text-foreground',
+              '!rounded !p-0 !bg-blue-100 dark:!bg-gray-600 !font-mono !text-sm !text-foreground whitespace-pre',
               className
             )}
             {...props}

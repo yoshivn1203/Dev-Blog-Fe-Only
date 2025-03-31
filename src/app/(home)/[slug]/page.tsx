@@ -101,10 +101,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 ),
                 //code block (```) and mermaid diagram has a pre tag as parent
                 pre: ({ children, ...props }) => (
-                  <pre
-                    className='!bg-blue-100 dark:!bg-gray-600 !p-0 rounded-lg overflow-x-auto'
-                    {...props}
-                  >
+                  <pre className='!bg-blue-100 dark:!bg-gray-600 !p-0 rounded-lg' {...props}>
                     {children}
                   </pre>
                 ),
