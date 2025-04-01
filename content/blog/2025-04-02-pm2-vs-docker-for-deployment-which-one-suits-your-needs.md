@@ -1,16 +1,17 @@
 ---
 layout: blog
 title: "PM2 vs Docker for Deployment: Which One Suits Your Needs?"
-date: 2025-04-01T07:04:20
+date: 2025-04-01T17:48:35
 author: Nguyen Nguyen
 tags:
   - Cloud
   - DevOps
 reading_time: 10
 category: Technology
-thumbnail: /images/uploads/1743491055936-pm2-to-docker-scaling.png
+thumbnail: /images/uploads/1743529711312-Software-Deployment.jpeg
 description: "Comparing PM2 and Docker for deployment, which one to use when you need to set up something fast or when you need to scale up"
 ---
+
 
 When it comes to deploying applications, developers often face the decision of choosing the right tool for the job. Two popular options are **PM2** and **Docker**, each serving distinct purposes while overlapping in some deployment scenarios. In this blog, we'll explore what PM2 and Docker are, why they're needed, and how they compare for simple setups and scaling.
 

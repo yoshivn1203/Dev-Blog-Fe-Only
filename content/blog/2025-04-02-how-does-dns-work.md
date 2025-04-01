@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "How does DNS work?"
-date: 2025-03-29T12:36:40
+date: 2025-04-01T17:50:56
 author: Nguyen Nguyen
 tags:
   - Cloud
@@ -12,6 +12,7 @@ category: technology
 thumbnail: /images/uploads/what-is-dns.png
 description: "Understanding DNS Records - A Focus on the Most Used Type "
 ---
+
 
 
 
@@ -84,3 +85,5 @@ Another option is to use CNAME to map `www.myapp.com` to `myapp.com`
 ## Conclusion
 
 The `A` record is the workhorse of DNS—simple, essential, and ubiquitous. With it, you can connect your domain to your app’s server and get online in no time. AWS Route 53 makes the process straightforward, and once your `A` record is set, your users can access your app with a friendly domain name instead of a clunky IP address. Happy hosting!
+
+Note: Need to add an example of using A record with alias to map to another domain, and why we do this instead of using CNAME record (because we setting this for root domain url)
