@@ -3,10 +3,15 @@
 import { Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
 
-import logoImage from '@/assets/images/logo.svg'
+import logoImage from '@/assets/images/logo.png'
+import logoImageDark from '@/assets/images/logo-dark.png'
+import { RootState } from '@/store/store'
 
 export function Footer() {
+  const isDark = useSelector((state: RootState) => state.theme.isDark)
+
   return (
     <footer className='shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] mt-8 px-4 pt-8 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800  '>
       <div className='mx-auto max-w-screen-2xl '>
@@ -14,14 +19,14 @@ export function Footer() {
           <div className='sm:justify-start lg:max-w-sm'>
             <Link href='/'>
               <Image
-                src={logoImage}
+                src={isDark ? logoImageDark : logoImage}
                 alt='DN DENTCARE Logo'
-                height={160}
-                width={160}
+                height={200}
+                width={200}
                 className='object-contain'
               />
             </Link>
-            <p className='text-sm text-muted-foreground'>
+            <p className='text-sm text-muted-foreground mt-6'>
               Welcome to my personal developer blog, where I share my thoughts, experiences, and
               lessons learned as I explore the world of software development. Whether you're here to
               learn or just curious about my projects, I hope you find something useful!

@@ -9,7 +9,8 @@ import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Post, searchPosts } from '@/app/(home)/actions'
-import logoImage from '@/assets/images/logo.svg'
+import logoImage from '@/assets/images/logo.png'
+import logoImageDark from '@/assets/images/logo-dark.png'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { RootState } from '@/store/store'
@@ -76,10 +77,10 @@ export function Header() {
           <div className='flex-shrink-0 flex items-center justify-center md:justify-start'>
             <Link href='/' className='flex items-center justify-center md:justify-start'>
               <Image
-                src={logoImage}
+                src={isDark ? logoImageDark : logoImage}
                 alt='DN DENTCARE Logo'
                 height={100}
-                width={100}
+                width={180}
                 className='object-contain'
               />
             </Link>
@@ -136,7 +137,7 @@ export function Header() {
               variant='ghost'
               size='icon'
               onClick={() => dispatch(toggleTheme())}
-              className='p-2'
+              className='active:bg-transparent hover:bg-transparent hover:opacity-80'
             >
               {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
             </Button>
@@ -150,7 +151,7 @@ export function Header() {
                 className={cn(
                   'font-semibold rounded-none hover:bg-transparent hover:opacity-80 py-0 h-[24px]',
                   pathname === '/'
-                    ? 'text-blue-600 hover:text-blue-600 border-b-2 border-blue-600'
+                    ? 'text-blue-500 hover:text-blue-500  border-b-2 border-blue-500'
                     : 'hover:text-primary'
                 )}
               >
@@ -163,7 +164,7 @@ export function Header() {
                 className={cn(
                   'font-semibold rounded-none hover:bg-transparent hover:opacity-80 py-0 h-[24px]',
                   pathname === '/about'
-                    ? 'text-blue-600 hover:text-blue-600 border-b-2 border-blue-600'
+                    ? 'text-blue-500 hover:text-blue-500  border-b-2 border-blue-500'
                     : 'hover:text-primary'
                 )}
               >
@@ -175,7 +176,7 @@ export function Header() {
                 variant='ghost'
                 size='icon'
                 onClick={() => dispatch(toggleTheme())}
-                className='ml-2 hover:bg-transparent hover:opacity-80'
+                className='ml-2 active:bg-transparent hover:bg-transparent hover:opacity-80'
               >
                 {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
               </Button>
