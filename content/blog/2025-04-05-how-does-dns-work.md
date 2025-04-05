@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "How does DNS work?"
-date: 2025-04-01T17:50:56
+date: 2025-04-05T07:25:53
 author: Nguyen Nguyen
 tags:
   - Cloud
@@ -12,6 +12,8 @@ category: technology
 thumbnail: /images/uploads/what-is-dns.png
 description: "Understanding DNS Records - A Focus on the Most Used Type "
 ---
+
+
 
 
 
@@ -71,7 +73,7 @@ If you registered your domain elsewhere, ensure its nameservers point to Route 5
   - **Routing policy**: Choose **Simple routing** (default).
 - Click **Create records**.
 
-### Bonus: Adding a www Subdomain
+### Bonus 1: Adding a www Subdomain
 
 Want `www.myapp.com` to work too? Add another `A` record:
 
@@ -81,6 +83,21 @@ Want `www.myapp.com` to work too? Add another `A` record:
 - Save it, and both `myapp.com` and `www.myapp.com` will point to your app.
 
 Another option is to use CNAME to map `www.myapp.com` to `myapp.com`
+
+### Bonus 2: Using alias with A record to mapping root domain
+
+When you're using a CDN (Cloudflare, Akamai, or AWS CloudFront) for your website, it’s generally recommended to use an ALIAS (or equivalent, like ANAME) record for your root domain. It's because the IP addresses associated with their endpoints can change dynamically due to load balancing so a normal A record pointing to the IP won't work.
+
+Also, you can’t use a CNAME record to map the domain to CDN host namebecause it violate DNS standards to use CNAME record for root domain. So this's how you should do it in Route 53 hosted zone:
+
+- **Record name**: Leave blank for the root domain
+- **Record Type**:  `A`
+-  **Alias**: true
+-  **Route Traffic to**: **Alias to Cloudfront distribution**
+- **Value**: `example.cloudfront.net` (CDN host name)
+
+Result: Resolves to the CDN’s current IP (e.g., 104.16.1.1) automatically.
+
 
 ## Conclusion
 
