@@ -8,8 +8,8 @@ import logoImage from '@/assets/images/logo.svg'
 
 export function Footer() {
   return (
-    <footer className='shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] dark:bg-gray-800 border-t mt-8'>
-      <div className='mx-auto max-w-screen-2xl px-4 pt-8 pb-4 sm:px-6 lg:px-8'>
+    <footer className='shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] mt-8 px-4 pt-8 sm:px-6 lg:px-8 dark:bg-gray-800 border-t '>
+      <div className='mx-auto max-w-screen-2xl '>
         <div className='flex flex-col lg:flex-row items-start justify-between gap-8'>
           <div className='sm:justify-start lg:max-w-sm'>
             <Link href='/'>
@@ -81,8 +81,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className='mt-12 border-t pt-2 pb-2'>
-        <div className='text-center text-sm text-muted-foreground'>
+      <div className='mt-12 max-w-screen-2xl mx-auto border-t-2 pt-4 pb-4 dark:border-white/10'>
+        <div className='text-sm text-muted-foreground'>
           <p>© 2024 BoBytes. All rights reserved.</p>
         </div>
       </div>
