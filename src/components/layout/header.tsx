@@ -1,16 +1,13 @@
 'use client'
 
 import debounce from 'lodash/debounce'
-import { Loader2, Moon, Search, Sun } from 'lucide-react'
-import Image from 'next/image'
+import { Cpu, Loader2, Moon, Search, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Post, searchPosts } from '@/app/(home)/actions'
-import logoImage from '@/assets/images/logo.png'
-import logoImageDark from '@/assets/images/logo-dark.png'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { RootState } from '@/store/store'
@@ -52,8 +49,12 @@ export function Header() {
         <div className='flex justify-between h-16 items-center'>
           {/* Mobile menu button */}
           <div className='md:hidden'>
-            <Button variant='ghost' onClick={() => setIsMenuOpen(!isMenuOpen)} className='p-2'>
-              <svg className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+            <Button
+              variant='ghost'
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className='p-2 bg-transparent hover:bg-transparent hover:opacity-80 active:bg-transparent'
+            >
+              <svg className='!h-5 !w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                 {isMenuOpen ? (
                   <path
                     strokeLinecap='round'
@@ -76,13 +77,10 @@ export function Header() {
           {/* Logo */}
           <div className='flex-shrink-0 flex items-center justify-center md:justify-start'>
             <Link href='/' className='flex items-center justify-center md:justify-start'>
-              <Image
-                src={isDark ? logoImageDark : logoImage}
-                alt='DN DENTCARE Logo'
-                height={100}
-                width={180}
-                className='object-contain'
-              />
+              <Cpu className='h-8 w-8 mr-2 text-indigo-500 dark:text-indigo-400' />
+              <p className='text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 text-transparent bg-clip-text'>
+                BoBytes
+              </p>
             </Link>
           </div>
 
@@ -139,7 +137,7 @@ export function Header() {
               onClick={() => dispatch(toggleTheme())}
               className='active:bg-transparent hover:bg-transparent hover:opacity-80'
             >
-              {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
+              {isDark ? <Sun className='!h-5 !w-5' /> : <Moon className='!h-5 !w-5' />}
             </Button>
           </div>
 
@@ -178,7 +176,7 @@ export function Header() {
                 onClick={() => dispatch(toggleTheme())}
                 className='ml-2 active:bg-transparent hover:bg-transparent hover:opacity-80'
               >
-                {isDark ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
+                {isDark ? <Sun className='!h-5 !w-5' /> : <Moon className='!h-5 !w-5' />}
               </Button>
             </div>
           </div>

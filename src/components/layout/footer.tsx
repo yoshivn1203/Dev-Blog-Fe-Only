@@ -1,30 +1,21 @@
 'use client'
 
-import { Mail, MapPin } from 'lucide-react'
-import Image from 'next/image'
+import { Cpu, Mail, MapPin } from 'lucide-react'
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
-
-import logoImage from '@/assets/images/logo.png'
-import logoImageDark from '@/assets/images/logo-dark.png'
-import { RootState } from '@/store/store'
 
 export function Footer() {
-  const isDark = useSelector((state: RootState) => state.theme.isDark)
-
   return (
     <footer className='shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] mt-8 px-4 pt-8 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800  '>
       <div className='mx-auto max-w-screen-2xl '>
         <div className='flex flex-col lg:flex-row items-start justify-between gap-8'>
           <div className='sm:justify-start lg:max-w-sm'>
             <Link href='/'>
-              <Image
-                src={isDark ? logoImageDark : logoImage}
-                alt='DN DENTCARE Logo'
-                height={200}
-                width={200}
-                className='object-contain'
-              />
+              <div className='flex items-center'>
+                <Cpu className='h-8 w-8 mr-2 text-indigo-500 dark:text-indigo-400' />
+                <p className='text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 text-transparent bg-clip-text'>
+                  BoBytes
+                </p>
+              </div>
             </Link>
             <p className='text-sm text-muted-foreground mt-6'>
               Welcome to my personal developer blog, where I share my thoughts, experiences, and
