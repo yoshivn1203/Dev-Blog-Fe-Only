@@ -268,8 +268,5 @@ export function Header() {
         </div>
       </div>
     </nav>
-    //fix header 1
-    //asdasdasdasd
-    //fix header 3
   )
 }
