@@ -69,9 +69,18 @@ description: "${data.description}"
         throw new Error('Failed to save file')
       }
 
+      // Update the blog index after successful edit
+      const indexResponse = await fetch('/api/generate-index', {
+        method: 'POST'
+      })
+
+      if (!indexResponse.ok) {
+        throw new Error('Failed to update index')
+      }
+
       router.push('/admin')
     } catch (error) {
-      console.error('Error saving file:', error)
+      console.error('Error:', error)
       alert('Failed to save file')
     }
   }
