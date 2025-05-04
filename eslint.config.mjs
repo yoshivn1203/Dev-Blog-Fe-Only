@@ -59,5 +59,15 @@ export default [
         version: 'detect'
       }
     }
+  },
+  {
+    files: ['scripts/*.js'],
+    languageOptions: {
+      sourceType: 'script',
+      globals: {
+        require: 'readonly',
+        process: 'readonly'
+      }
+    }
   }
 ]

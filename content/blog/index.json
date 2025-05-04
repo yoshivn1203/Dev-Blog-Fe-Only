@@ -1,0 +1,168 @@
+[
+  {
+    "slug": "2025-03-29-ingress-and-egress-in-aws-ec2-differences-and-examples",
+    "layout": "blog",
+    "title": "Ingress and Egress in AWS EC2: Differences and Examples",
+    "date": "2025-03-29T12:36:43.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps"
+    ],
+    "reading_time": 8,
+    "category": "technology",
+    "thumbnail": "/images/uploads/amazon-ec2.jpg",
+    "description": "Ingress and Egress in AWS EC2 "
+  },
+  {
+    "slug": "2025-03-31-aws-vpc-subnets-security-groups-internet-gateways",
+    "layout": "blog",
+    "title": "AWS VPC: Subnets, Security Groups, Internet Gateways",
+    "date": "2025-03-31T04:40:38.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps",
+      "Security"
+    ],
+    "reading_time": 14,
+    "category": "technology",
+    "thumbnail": "/images/uploads/maxresdefault.jpg",
+    "description": "This blog explores AWS VPC, subnets, Internet Gateways, and security groups, highlighting their roles and differences "
+  },
+  {
+    "slug": "2025-04-02-pm2-vs-docker-for-deployment-which-one-suits-your-needs",
+    "layout": "blog",
+    "title": "PM2 vs Docker for Deployment: Which One Suits Your Needs?",
+    "date": "2025-04-01T17:48:35.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps"
+    ],
+    "reading_time": 10,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1743529711312-Software-Deployment.jpeg",
+    "description": "Comparing PM2 and Docker for deployment, which one to use when you need to set up something fast or when you need to scale up"
+  },
+  {
+    "slug": "2025-04-05-cdn-vs-browser-cache",
+    "layout": "blog",
+    "title": "CDN vs Browser Cache",
+    "date": "2025-04-05T08:26:23.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps"
+    ],
+    "reading_time": 8,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1743841424038-tessa-cdn.jpg",
+    "description": "Understanding Content Delivery Networks (CDN) and How They Differ from Browser Cache"
+  },
+  {
+    "slug": "2025-04-05-how-does-dns-work",
+    "layout": "blog",
+    "title": "How does DNS work?",
+    "date": "2025-04-05T07:25:53.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps",
+      "Security"
+    ],
+    "reading_time": 11,
+    "category": "technology",
+    "thumbnail": "/images/uploads/what-is-dns.png",
+    "description": "Understanding DNS Records - A Focus on the Most Used Type "
+  },
+  {
+    "slug": "2025-04-12-basic-usage-of-nginx-in-deploying-back-end-application",
+    "layout": "blog",
+    "title": "Basic Usage of Nginx in deploying back end application",
+    "date": "2025-04-12T07:16:01.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps"
+    ],
+    "reading_time": 10,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1744442158936-nginx-la-gi-2.webp",
+    "description": "Using Nginx to Deploy NestJS Applications on an EC2 Instance"
+  },
+  {
+    "slug": "2025-04-12-using-nginx-to-secure-a-nestjs-app-with-let-s-encrypt",
+    "layout": "blog",
+    "title": "Using Nginx to secure a NestJS App with Let's Encrypt",
+    "date": "2025-04-12T07:39:41.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Cloud",
+      "DevOps"
+    ],
+    "reading_time": 10,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1744443575561-8d3d5afaf51d392.jpg",
+    "description": "How To Install Nginx and Secure a NestJS App with Let's Encrypt on Ubuntu 20.04"
+  },
+  {
+    "slug": "2025-04-19-setting-up-relationships-with-typeorm-and-postgresql",
+    "layout": "blog",
+    "title": "Setting Up Relationships with TypeORM and PostgreSQL",
+    "date": "2025-04-19T08:47:00.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "SQL",
+      "Database"
+    ],
+    "reading_time": 15,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1745052418849-slq-relationship.jpeg",
+    "description": "Demonstrates how to configure one-to-one, one-to-many, and many-to-many relationships using TypeORM with a PostgreSQL database."
+  },
+  {
+    "slug": "2025-04-19-using-indexes-with-typeorm-and-postgresql",
+    "layout": "blog",
+    "title": "Using Indexes with TypeORM and PostgreSQL",
+    "date": "2025-04-19T03:19:25.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "SQL",
+      "Database"
+    ],
+    "reading_time": 10,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1745032699799-db index.jpg",
+    "description": "Using indexes for optimizing database performance in PostgreSQL with TypeORM"
+  },
+  {
+    "slug": "2025-04-30-web-scraping-with-node-js",
+    "layout": "blog",
+    "title": "Web Scraping with Node.js",
+    "date": "2025-04-30T04:55:34.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Nodejs"
+    ],
+    "reading_time": 15,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1745988931422-web-scraping.jpeg",
+    "description": "How to scrape a web using nodejs, differences between scrapping a SSR and CSR website, work around of dns anti bot"
+  },
+  {
+    "slug": "2025-05-04-most-commonly-used-postgresql-commands",
+    "layout": "blog",
+    "title": "Most Commonly Used PostgreSQL Commands",
+    "date": "2025-05-04T12:37:35.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "SQL",
+      "Database"
+    ],
+    "reading_time": 17,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1746351941761-PostgreSQL-Commands.png",
+    "description": "Outlines the most frequently used PostgreSQL commands, grouped by function, with practical examples to help you get started. These commands are executed via the `psql` command-line interface or GUI tools like pgAdmin."
+  }
+]

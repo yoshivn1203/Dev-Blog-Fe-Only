@@ -22,21 +22,9 @@ export interface Post {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const posts = await Promise.all(
-    fileNames.map(async fileName => {
-      const slug = fileName.replace(/\.md$/, '')
-      const fullPath = path.join(postsDirectory, fileName)
-      const fileContents = await fs.promises.readFile(fullPath, 'utf8')
-      const { data } = matter(fileContents)
-
-      return {
-        slug,
-        ...(data as Omit<Post, 'slug'>)
-      }
-    })
-  )
-
+  const indexPath = path.join(postsDirectory, 'index.json')
+  const fileContents = await fs.promises.readFile(indexPath, 'utf8')
+  const posts: Post[] = JSON.parse(fileContents)
   return posts.sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
