@@ -53,3 +53,15 @@ export async function searchPosts(query: string): Promise<Post[]> {
 
   return posts.filter(post => post.title.toLowerCase().includes(searchQuery))
 }
+
+export async function getPaginatedPosts(
+  page: number,
+  pageSize: number
+): Promise<{ posts: Post[]; total: number }> {
+  const posts = await getPosts()
+  const start = (page - 1) * pageSize
+  return {
+    posts: posts.slice(start, start + pageSize),
+    total: posts.length
+  }
+}
