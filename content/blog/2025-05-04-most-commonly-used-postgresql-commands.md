@@ -1,16 +1,17 @@
 ---
 layout: blog
 title: "Most Commonly Used PostgreSQL Commands"
-date: 2025-05-04T09:45:43
+date: 2025-05-04T12:37:35
 author: Nguyen Nguyen
 tags:
-  - PostgreSQL
-  - Back end
+  - SQL
+  - Database
 reading_time: 17
 category: Technology
 thumbnail: /images/uploads/1746351941761-PostgreSQL-Commands.png
 description: "Outlines the most frequently used PostgreSQL commands, grouped by function, with practical examples to help you get started. These commands are executed via the `psql` command-line interface or GUI tools like pgAdmin."
 ---
+
 
 PostgreSQL, a powerful open-source relational database, is widely used for its robustness and flexibility. Whether you're managing databases, querying data, or handling user permissions, mastering its core commands is essential. This article outlines the most frequently used PostgreSQL commands, grouped by function, with practical examples to help you get started. These commands are executed via the `psql` command-line interface or GUI tools like pgAdmin.
 
