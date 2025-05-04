@@ -1,14 +1,16 @@
 import Link from 'next/link'
+import React from 'react'
 
 import { Hero } from '@/components/layout/hero'
 
 import { getPaginatedPosts } from './actions'
 import { BlogCard } from './blog-card'
 
-export default async function BlogPage({ searchParams }: { searchParams: { page?: string } }) {
-  const page = parseInt(searchParams.page || '1', 10)
+export default function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const resolvedSearchParams = React.use(searchParams)
+  const page = Math.max(1, parseInt(resolvedSearchParams.page || '1', 10))
   const pageSize = 10
-  const { posts, total } = await getPaginatedPosts(page, pageSize)
+  const { posts, total } = React.use(getPaginatedPosts(page, pageSize))
   const totalPages = Math.ceil(total / pageSize)
 
   return (
@@ -18,18 +20,19 @@ export default async function BlogPage({ searchParams }: { searchParams: { page?
         <p className='text-base md:text-lg font-bold text-left'>Latest posts</p>
         <div className='h-[1px] w-full bg-gray-200 dark:bg-gray-700 mb-6'></div>
         <div className='flex flex-col gap-6'>
-          {posts.map(post => (
-            <BlogCard key={post.slug} post={post} />
-          ))}
+          {posts.length === 0 ? (
+            <div className='text-center text-gray-500'>No posts found.</div>
+          ) : (
+            posts.map(post => <BlogCard key={post.slug} post={post} />)
+          )}
         </div>
-        <Pagination page={page} totalPages={totalPages} />
+        {totalPages > 1 && <Pagination page={page} totalPages={totalPages} />}
       </div>
     </>
   )
 }
 
 function Pagination({ page, totalPages }: { page: number; totalPages: number }) {
-  // Show up to 5 page numbers, centered on current page
   const pageNumbers = []
   const minPage = Math.max(1, page - 2)
   const maxPage = Math.min(totalPages, page + 2)
