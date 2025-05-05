@@ -6,11 +6,15 @@ import { Hero } from '@/components/layout/hero'
 import { getPaginatedPosts } from './actions'
 import { BlogCard } from './blog-card'
 
-export default function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
-  const resolvedSearchParams = React.use(searchParams)
+export default async function BlogPage({
+  searchParams
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
+  const resolvedSearchParams = await searchParams
   const page = Math.max(1, parseInt(resolvedSearchParams.page || '1', 10))
   const pageSize = 10
-  const { posts, total } = React.use(getPaginatedPosts(page, pageSize))
+  const { posts, total } = await getPaginatedPosts(page, pageSize)
   const totalPages = Math.ceil(total / pageSize)
 
   return (

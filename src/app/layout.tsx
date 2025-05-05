@@ -5,6 +5,7 @@ import './globals.css'
 import clsx from 'clsx'
 import { Loader2 } from 'lucide-react'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { usePathname } from 'next/navigation'
 import React, { Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { useSelector } from 'react-redux'
@@ -35,6 +36,12 @@ function LoadingSpinner() {
 
 function RootLayoutContent({ children }: { children: React.ReactNode }) {
   const isDark = useSelector((state: RootState) => state.theme.isDark)
+  const pathname = usePathname()
+
+  React.useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   return (
     //add className='dark' to html tag to enable dark mode
