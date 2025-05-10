@@ -34,9 +34,10 @@ export default function EditPost({ params }: { params: Promise<{ slug: string }>
 
   const handleSubmit = async (data: FormData, content?: string) => {
     try {
-      const filename = generateFilename(data.title)
-      const currentDate = new Date()
-      const formattedDate = currentDate.toISOString().replace(/\.\d{3}Z$/, '')
+      // Convert the post date string to a Date object if it exists
+      const postDate = post?.date ? new Date(post.date) : new Date()
+      const filename = generateFilename(data.title, postDate)
+      const formattedDate = postDate?.toISOString().replace(/\.\d{3}Z$/, '')
       const frontmatter = `---
 layout: blog
 title: "${data.title}"
