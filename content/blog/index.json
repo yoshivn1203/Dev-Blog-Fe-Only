@@ -137,20 +137,6 @@
     "description": "Using indexes for optimizing database performance in PostgreSQL with TypeORM"
   },
   {
-    "slug": "2025-04-30-web-scraping-with-node-js",
-    "layout": "blog",
-    "title": "Web Scraping with Node.js",
-    "date": "2025-04-30T04:55:34.000Z",
-    "author": "Nguyen Nguyen",
-    "tags": [
-      "Nodejs"
-    ],
-    "reading_time": 15,
-    "category": "Technology",
-    "thumbnail": "/images/uploads/1745988931422-web-scraping.jpeg",
-    "description": "How to scrape a web using nodejs, differences between scrapping a SSR and CSR website, work around of dns anti bot"
-  },
-  {
     "slug": "2025-05-04-most-commonly-used-postgresql-commands",
     "layout": "blog",
     "title": "Most Commonly Used PostgreSQL Commands",
@@ -164,5 +150,19 @@
     "category": "Technology",
     "thumbnail": "/images/uploads/1746351941761-PostgreSQL-Commands.png",
     "description": "Outlines the most frequently used PostgreSQL commands, grouped by function, with practical examples to help you get started. These commands are executed via the `psql` command-line interface or GUI tools like pgAdmin."
+  },
+  {
+    "slug": "2025-05-10-web-scraping-with-node-js",
+    "layout": "blog",
+    "title": "Web Scraping with Node.js",
+    "date": "2025-05-10T13:37:13.000Z",
+    "author": "Nguyen Nguyen",
+    "tags": [
+      "Nodejs"
+    ],
+    "reading_time": 15,
+    "category": "Technology",
+    "thumbnail": "/images/uploads/1745988931422-web-scraping.jpeg",
+    "description": "How to scrape a web using nodejs, differences between scrapping a SSR and CSR website, work around of dns anti bot"
   }
 ]

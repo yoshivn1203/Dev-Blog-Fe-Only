@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "Web Scraping with Node.js"
-date: 2025-04-30T04:55:34
+date: 2025-05-10T13:37:13
 author: Nguyen Nguyen
 tags:
   - Nodejs
@@ -10,6 +10,7 @@ category: Technology
 thumbnail: /images/uploads/1745988931422-web-scraping.jpeg
 description: "How to scrape a web using nodejs, differences between scrapping a SSR and CSR website, work around of dns anti bot"
 ---
+
 
 # Web Scraping with Node.js: SSR vs. CSR Websites
 
@@ -80,7 +81,7 @@ async function scrapeWithHeaders(url) {
 }
 ```
 
-By setting these headers, your request is more likely to be treated as a legitimate browser request, reducing the chances of a 403 error.
+By setting these headers, your request is more likely to be treated as a legitimate browser request, reducing the chances of a 403 error. if this still not work, consider using **Puppeteer** similar to how we use it for **CSR** website below. 
 
 ## Scraping CSR Websites
 
